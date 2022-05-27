@@ -15,6 +15,9 @@ let theme = createTheme({
 			contrastText: '#000000',
 		},
 	},
+	typography: {
+		fontFamily: 'Kanit, sans-serif',
+	},
 });
 
 // theme = responsiveFontSizes(theme);
