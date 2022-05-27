@@ -3,16 +3,16 @@ import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 let theme = createTheme({
 	palette: {
 		primary: {
-			main: '#212121',
-			light: '#484848',
-			dark: '#000000',
+			main: '#134021',
+			light: '#3f6b49',
+			dark: '#001b00',
 			contrastText: '#ffffff',
 		},
 		secondary: {
-			main: '#0d7377',
-			light: '#4ca2a6',
-			dark: '#00474b',
-			contrastText: '#ffffff',
+			main: '#80aa3f',
+			light: '#b2dc6e',
+			dark: '#507b0a',
+			contrastText: '#000000',
 		},
 	},
 });
