@@ -1,5 +1,6 @@
 import { Drawer } from '@mui/material';
 import React from 'react';
+import Search from './Search';
 
 export interface SidenavProps extends React.HTMLAttributes<HTMLElement> {}
 
@@ -19,7 +20,9 @@ const Sidenav = ({ ...other }: SidenavProps) => {
 			variant="permanent"
 			anchor="left"
 			{...other}
-		></Drawer>
+		>
+			<Search />
+		</Drawer>
 	);
 };
 
