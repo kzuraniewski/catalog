@@ -10,10 +10,6 @@ const Header = () => {
 			sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}
 		>
 			<Toolbar>
-				<Box flex={1} sx={{ '& img': { height: '3.2rem' } }}>
-					<Link href="/">{/* <img src={logo} alt="Logo" /> */}</Link>
-				</Box>
-
 				<Button
 					variant="text"
 					sx={{
