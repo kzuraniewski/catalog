@@ -18,6 +18,9 @@ let theme = createTheme({
 	typography: {
 		fontFamily: 'Kanit, sans-serif',
 	},
+	shape: {
+		borderRadius: 2,
+	},
 });
 
 // theme = responsiveFontSizes(theme);
