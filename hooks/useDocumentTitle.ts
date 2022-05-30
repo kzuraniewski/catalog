@@ -7,7 +7,7 @@ const useDocumentTitle = (title: string, prevailOnUnmount: boolean = false) => {
 	const defaultTitle = useRef(document.title);
 
 	useEffect(() => {
-		document.title = `${title} | Olimp Agency`;
+		document.title = `${title} | Katalog`;
 	}, [title]);
 
 	useEffect(
