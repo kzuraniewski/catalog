@@ -4,7 +4,7 @@ import { AppBar, Box, Button, Link, Toolbar } from '@mui/material';
 
 const Header = () => {
 	return (
-		<AppBar position="sticky">
+		<AppBar position="sticky" sx={{ zIndex: theme => theme.zIndex.drawer + 1 }}>
 			<Toolbar>
 				<Box flex={1} sx={{ '& img': { height: '3.2rem' } }}>
 					<Link href="/">{/* <img src={logo} alt="Logo" /> */}</Link>
