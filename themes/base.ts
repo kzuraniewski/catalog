@@ -17,6 +17,10 @@ let theme = createTheme({
 	},
 	typography: {
 		fontFamily: 'Kanit, sans-serif',
+		h1: {
+			fontWeight: 400,
+			fontSize: 40,
+		},
 	},
 	shape: {
 		borderRadius: 2,
