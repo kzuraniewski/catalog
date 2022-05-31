@@ -3,6 +3,7 @@ import { Drawer, Divider, Box, List } from '@mui/material';
 import { Bookmark, MenuBook } from '@mui/icons-material';
 import Logo from './Logo';
 import SidenavLink from './SidenavLink';
+import Search from './Search';
 
 export interface SidenavProps extends React.HTMLAttributes<HTMLElement> {}
 
@@ -23,13 +24,16 @@ const Sidenav = ({ ...other }: SidenavProps) => {
 			{...other}
 		>
 			<Box sx={{ m: 2 }}>
+				{/* FIXME: incorrect interface */}
 				<Logo />
 			</Box>
 
 			<Divider />
 
 			<Box flexGrow={1} my={2}>
-				<List>
+				<Search InputBaseProps={{ placeholder: 'Szukaj dokumentu...' }} />
+
+				<List sx={{ mt: 1 }}>
 					<SidenavLink to="/" icon={<MenuBook />}>
 						Katalog
 					</SidenavLink>

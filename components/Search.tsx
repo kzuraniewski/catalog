@@ -21,9 +21,9 @@ const Search = ({
 			sx={{
 				position: 'relative',
 				borderRadius: theme.shape.borderRadius,
-				backgroundColor: alpha(theme.palette.common.white, 0.15),
+				backgroundColor: alpha(theme.palette.grey[400], 0.15),
 				'&:hover': {
-					backgroundColor: alpha(theme.palette.common.white, 0.25),
+					backgroundColor: alpha(theme.palette.grey[400], 0.25),
 				},
 				marginRight: theme.spacing(2),
 				marginLeft: 0,
@@ -37,7 +37,9 @@ const Search = ({
 		>
 			{/* Search icon wrapper */}
 			<Box
-				padding={theme.spacing(0, 2)}
+				// padding={theme.spacing(0, 2)}
+				pl={1}
+				pr={2}
 				height="100%"
 				position="absolute"
 				// pointerEvents="none"
@@ -56,7 +58,7 @@ const Search = ({
 					'& .MuiInputBase-input': {
 						padding: theme.spacing(1, 1, 1, 0),
 						// vertical padding + font size from searchIcon
-						paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+						paddingLeft: `calc(1em + ${theme.spacing(3)})`,
 						transition: theme.transitions.create('width'),
 						width: '100%',
 					},
