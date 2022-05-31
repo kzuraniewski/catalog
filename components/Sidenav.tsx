@@ -15,7 +15,6 @@ const Sidenav = ({ ...other }: SidenavProps) => {
 				width: drawerWidth,
 				flexShrink: 0,
 				'& .MuiDrawer-paper': {
-					backgroundColor: 'secondary.main',
 					width: drawerWidth,
 				},
 			}}
