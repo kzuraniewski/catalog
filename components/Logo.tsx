@@ -1,21 +1,19 @@
 import React from 'react';
-// import Image from 'next/image';
-// import logo from '../assets/logo.png';
+import Image, { ImageProps } from 'next/image';
 
-export interface LogoProps extends React.HTMLAttributes<HTMLElement> {}
+export interface LogoProps extends ImageProps {}
 
 const Logo = ({ ...other }: LogoProps) => {
-	// return <Image width={300} height={100} src={logo} alt="Logo" {...other}></Image>;
 	return (
-		<div
-			className="logo"
-			style={{
-				padding: '30px 0',
-			}}
+		<Image
+			layout="responsive"
+			width={1157}
+			height={716}
+			alt="Logo"
+			priority
 			{...other}
-		>
-			LOGO
-		</div>
+			src="/logo.png"
+		></Image>
 	);
 };
 
