@@ -3,6 +3,7 @@ import { AppBar, Box, Toolbar } from '@mui/material';
 import HeaderButton from './HeaderButton';
 import { drawerWidth } from './Sidenav';
 import { ArrowBack } from '@mui/icons-material';
+import UserMenu from './UserMenu';
 // import logo from '../assets/logo.svg';
 
 const mainWebsiteUrl = 'http://agrofrankopol.strona-projekt.pl';
@@ -17,8 +18,10 @@ const Header = () => {
 				<HeaderButton href={mainWebsiteUrl} startIcon={<ArrowBack />}>
 					Strona główna
 				</HeaderButton>
+
 				<Box flexGrow={1} />
-				<HeaderButton>Login</HeaderButton>
+
+				<UserMenu />
 			</Toolbar>
 		</AppBar>
 	);
