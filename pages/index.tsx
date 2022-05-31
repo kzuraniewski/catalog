@@ -1,7 +1,9 @@
 import React from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import { Typography } from '@mui/material';
 import useDocumentTitle from '../hooks/useDocumentTitle';
+import Panel from '../components/Panel';
 
 const Katalog: NextPage = () => {
 	const { title } = useDocumentTitle();
@@ -12,7 +14,7 @@ const Katalog: NextPage = () => {
 				<title>{title}</title>
 			</Head>
 
-			<div>Katalog</div>
+			<Panel title="Wyszukiwarka maszyn"></Panel>
 		</>
 	);
 };
