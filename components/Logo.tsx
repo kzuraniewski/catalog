@@ -10,7 +10,7 @@ const Logo = ({ ...other }: LogoProps) => {
 		<div
 			className="logo"
 			style={{
-				padding: '40px 0',
+				padding: '30px 0',
 			}}
 			{...other}
 		>

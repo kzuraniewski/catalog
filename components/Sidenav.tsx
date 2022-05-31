@@ -23,7 +23,10 @@ const Sidenav = ({ ...other }: SidenavProps) => {
 			anchor="left"
 			{...other}
 		>
-			<Logo />
+			<Box sx={{ m: 2 }}>
+				<Logo />
+			</Box>
+
 			<Divider />
 
 			<Box flexGrow={1} my={2}>
