@@ -1,5 +1,6 @@
 import React from 'react';
-import { AppBar, Box, Button, Link, Toolbar } from '@mui/material';
+import { AppBar, Toolbar } from '@mui/material';
+import HeaderButton from './HeaderButton';
 import { drawerWidth } from './Sidenav';
 // import logo from '../assets/logo.svg';
 
@@ -10,15 +11,7 @@ const Header = () => {
 			sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}
 		>
 			<Toolbar>
-				<Button
-					variant="text"
-					sx={{
-						color: 'primary.contrastText',
-						'&:hover': { backgroundColor: 'primary.light' },
-					}}
-				>
-					Login
-				</Button>
+				<HeaderButton>Login</HeaderButton>
 			</Toolbar>
 		</AppBar>
 	);
