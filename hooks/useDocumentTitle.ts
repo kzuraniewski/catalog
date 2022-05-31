@@ -1,23 +1,9 @@
-import React, { useEffect, useRef } from 'react';
+export const websiteName = 'Katalog';
 
-/**
- * Sets the page's subtitle
- */
-const useDocumentTitle = (title: string, prevailOnUnmount: boolean = false) => {
-	const defaultTitle = useRef(document.title);
+const useDocumentTitle = (title?: string) => {
+	const docTitle = title ? `${title} | ${websiteName}` : websiteName;
 
-	useEffect(() => {
-		document.title = `${title} | Katalog`;
-	}, [title]);
-
-	useEffect(
-		() => () => {
-			if (!prevailOnUnmount) {
-				document.title = defaultTitle.current;
-			}
-		},
-		[]
-	);
+	return { title: docTitle };
 };
 
 export default useDocumentTitle;
