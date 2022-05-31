@@ -1,7 +1,8 @@
 import React from 'react';
-import { Drawer, Divider } from '@mui/material';
+import { Drawer, Divider, Box, List } from '@mui/material';
+import { Bookmark, MenuBook } from '@mui/icons-material';
 import Logo from './Logo';
-import Search from './Search';
+import SidenavLink from './SidenavLink';
 
 export interface SidenavProps extends React.HTMLAttributes<HTMLElement> {}
 
@@ -22,9 +23,25 @@ const Sidenav = ({ ...other }: SidenavProps) => {
 			anchor="left"
 			{...other}
 		>
-			<Logo />
-			<Divider sx={{ mb: 2 }} />
-			<Search />
+			<Box sx={{ m: 2 }}>
+				<Logo />
+			</Box>
+
+			<Divider />
+
+			<Box flexGrow={1} my={2}>
+				<List>
+					<SidenavLink to="/" icon={<MenuBook />}>
+						Katalog
+					</SidenavLink>
+					<SidenavLink to="/zapisane" icon={<Bookmark />}>
+						Zapisane
+					</SidenavLink>
+				</List>
+			</Box>
+
+			<Divider />
+			<Box p={2}>Lorem ipsum</Box>
 		</Drawer>
 	);
 };
