@@ -36,6 +36,9 @@ const Sidenav = ({ ...other }: SidenavProps) => {
 					</SidenavLink>
 				</List>
 			</Box>
+
+			<Divider />
+			<Box p={2}>Lorem ipsum</Box>
 		</Drawer>
 	);
 };
