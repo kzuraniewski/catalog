@@ -17,7 +17,7 @@ const Layout = ({ children }: LayoutProps) => {
 			<Box display="flex">
 				<Sidenav />
 
-				<Box p={5}>
+				<Box p={5} flexGrow={1}>
 					<Suspense fallback={<Loading />}>{children}</Suspense>
 				</Box>
 			</Box>
