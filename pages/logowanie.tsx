@@ -3,10 +3,11 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import useDocumentTitle from '../hooks/useDocumentTitle';
 import Panel from '../components/Panel';
-import { Box, Paper, TextField } from '@mui/material';
+import { Box, Paper, TextField, Typography, Link as MuiLink } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import Link from 'next/link';
 
 const validationSchema = yup.object({
 	login: yup.string().required('To pole jest wymagane.'),
@@ -27,14 +28,18 @@ const Katalog: NextPage = () => {
 	});
 
 	const [loading, setLoading] = useState(false);
+	const [loginError, setLoginError] = useState(false);
 
 	useEffect(() => {
+		if (!loading) return;
+
 		const id = setTimeout(() => {
 			setLoading(false);
+			setLoginError(true);
 		}, 2000);
 
 		return () => clearTimeout(id);
-	});
+	}, [loading]);
 
 	return (
 		<>
@@ -52,6 +57,17 @@ const Katalog: NextPage = () => {
 				>
 					<form onSubmit={formik.handleSubmit}>
 						<Box display="flex" flexDirection="column" gap={2}>
+							{loginError && (
+								<Paper
+									variant="outlined"
+									sx={{ backgroundColor: 'error.main', py: 0.3, px: 1 }}
+								>
+									<Typography sx={{ color: 'error.contrastText' }}>
+										Login lub hasło są nieprawidłowe
+									</Typography>
+								</Paper>
+							)}
+
 							<TextField
 								label="Login"
 								value={formik.values.login}
@@ -71,14 +87,21 @@ const Katalog: NextPage = () => {
 								name="password"
 							/>
 
-							<LoadingButton
-								loading={loading}
-								variant="contained"
-								type="submit"
-								sx={{ ml: 'auto', mt: 4 }}
-							>
-								Zaloguj
-							</LoadingButton>
+							<Box display="flex" mt={4}>
+								<Typography sx={{ flexGrow: 1 }}>
+									Problemy z logowaniem?{' '}
+									<Link href="#">
+										<MuiLink variant="body2" href="#">
+											Poproś o pomoc
+										</MuiLink>
+									</Link>
+									.
+								</Typography>
+
+								<LoadingButton loading={loading} variant="contained" type="submit">
+									Zaloguj
+								</LoadingButton>
+							</Box>
 						</Box>
 					</form>
 				</Paper>
