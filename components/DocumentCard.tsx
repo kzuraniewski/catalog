@@ -17,7 +17,7 @@ const DocumentCard = ({ ...other }: DocumentCardProps) => {
 	const [saved, setSaved] = useState(false);
 
 	return (
-		<Card sx={{ maxWidth: 300 }} {...other}>
+		<Card {...other}>
 			<CardActionArea disableRipple>
 				<CardContent>
 					<Typography variant="h3" sx={{ mb: 2 }}>
