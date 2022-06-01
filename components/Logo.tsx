@@ -2,7 +2,7 @@ import React from 'react';
 import Image, { ImageProps } from 'next/image';
 import Link from 'next/link';
 
-export interface LogoProps extends ImageProps {}
+export interface LogoProps extends Omit<ImageProps, 'src'> {}
 
 const Logo = ({ ...other }: LogoProps) => {
 	return (
