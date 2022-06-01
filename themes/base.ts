@@ -21,6 +21,9 @@ let theme = createTheme({
 			fontWeight: 400,
 			fontSize: 40,
 		},
+		h3: {
+			fontSize: 20,
+		},
 	},
 	shape: {
 		borderRadius: 2,
