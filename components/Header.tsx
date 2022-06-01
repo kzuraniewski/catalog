@@ -4,11 +4,14 @@ import HeaderButton from './HeaderButton';
 import { drawerWidth } from './Sidenav';
 import { ArrowBack } from '@mui/icons-material';
 import UserMenu from './UserMenu';
+import useAuth from '../hooks/useAuth';
 // import logo from '../assets/logo.svg';
 
 const mainWebsiteUrl = 'http://agrofrankopol.strona-projekt.pl';
 
 const Header = () => {
+	const { user } = useAuth();
+
 	return (
 		<AppBar
 			position="sticky"
@@ -21,7 +24,11 @@ const Header = () => {
 
 				<Box flexGrow={1} />
 
-				<UserMenu />
+				{user?.isLoggedIn ? (
+					<UserMenu />
+				) : (
+					<HeaderButton href="/logowanie">Zaloguj</HeaderButton>
+				)}
 			</Toolbar>
 		</AppBar>
 	);
