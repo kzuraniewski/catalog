@@ -1,6 +1,6 @@
 import React from 'react';
 import { AppBar, Box, Toolbar } from '@mui/material';
-import HeaderButton from './HeaderButton';
+import HeaderLink from './HeaderLink';
 import { drawerWidth } from './Sidenav';
 import { ArrowBack } from '@mui/icons-material';
 import UserMenu from './UserMenu';
@@ -18,16 +18,16 @@ const Header = () => {
 			sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}
 		>
 			<Toolbar>
-				<HeaderButton href={mainWebsiteUrl} startIcon={<ArrowBack />}>
+				<HeaderLink href={mainWebsiteUrl} startIcon={<ArrowBack />}>
 					Strona główna
-				</HeaderButton>
+				</HeaderLink>
 
 				<Box flexGrow={1} />
 
 				{user?.isLoggedIn ? (
 					<UserMenu />
 				) : (
-					<HeaderButton href="/logowanie">Zaloguj</HeaderButton>
+					<HeaderLink href="/logowanie">Zaloguj</HeaderLink>
 				)}
 			</Toolbar>
 		</AppBar>
