@@ -47,65 +47,67 @@ const Katalog: NextPage = () => {
 				<title>{title}</title>
 			</Head>
 
-			<Panel title="Panel logowania">
-				<Paper
-					sx={{
-						p: 3,
-						mx: 'auto',
-						maxWidth: 600,
-					}}
-				>
-					<form onSubmit={formik.handleSubmit}>
-						<Box display="flex" flexDirection="column" gap={2}>
-							{loginError && (
-								<Paper
-									variant="outlined"
-									sx={{ backgroundColor: 'error.main', py: 0.3, px: 1 }}
-								>
-									<Typography sx={{ color: 'error.contrastText' }}>
-										Login lub hasło są nieprawidłowe
-									</Typography>
-								</Paper>
-							)}
+			<Paper
+				sx={{
+					p: 3,
+					mx: 'auto',
+					maxWidth: 600,
+				}}
+			>
+				<Typography variant="h1" sx={{ mb: 4 }}>
+					Zaloguj się
+				</Typography>
 
-							<TextField
-								label="Login"
-								value={formik.values.login}
-								onChange={formik.handleChange}
-								error={formik.touched.login && Boolean(formik.errors.login)}
-								helperText={formik.touched.login && formik.errors.login}
-								variant="standard"
-								name="login"
-							/>
-							<TextField
-								label="Hasło"
-								value={formik.values.password}
-								onChange={formik.handleChange}
-								error={formik.touched.password && Boolean(formik.errors.password)}
-								helperText={formik.touched.password && formik.errors.password}
-								variant="standard"
-								name="password"
-							/>
-
-							<Box display="flex" mt={4}>
-								<Typography sx={{ flexGrow: 1 }}>
-									Problemy z logowaniem?{' '}
-									<Link href="#">
-										<MuiLink variant="body2" href="#">
-											Poproś o pomoc
-										</MuiLink>
-									</Link>
-									.
+				<form onSubmit={formik.handleSubmit}>
+					<Box display="flex" flexDirection="column" gap={2}>
+						{loginError && (
+							<Paper
+								variant="outlined"
+								sx={{ backgroundColor: 'error.main', py: 0.3, px: 1 }}
+							>
+								<Typography sx={{ color: 'error.contrastText' }}>
+									Login lub hasło są nieprawidłowe
 								</Typography>
+							</Paper>
+						)}
 
-								<LoadingButton loading={loading} variant="contained" type="submit">
-									Zaloguj
-								</LoadingButton>
-							</Box>
+						<TextField
+							label="Login"
+							value={formik.values.login}
+							onChange={formik.handleChange}
+							error={formik.touched.login && Boolean(formik.errors.login)}
+							helperText={formik.touched.login && formik.errors.login}
+							variant="standard"
+							name="login"
+						/>
+						<TextField
+							label="Hasło"
+							value={formik.values.password}
+							onChange={formik.handleChange}
+							error={formik.touched.password && Boolean(formik.errors.password)}
+							helperText={formik.touched.password && formik.errors.password}
+							variant="standard"
+							name="password"
+						/>
+
+						<Box display="flex" mt={4}>
+							<Typography sx={{ flexGrow: 1 }}>
+								Problemy z logowaniem?{' '}
+								<Link href="#">
+									<MuiLink variant="body2" href="#">
+										Poproś o pomoc
+									</MuiLink>
+								</Link>
+								.
+							</Typography>
+
+							<LoadingButton loading={loading} variant="contained" type="submit">
+								Zaloguj
+							</LoadingButton>
 						</Box>
-					</form>
-				</Paper>
-			</Panel>
+					</Box>
+				</form>
+			</Paper>
 		</>
 	);
 };
