@@ -95,6 +95,7 @@ const Katalog: NextPage = () => {
 							helperText={formik.touched.password && formik.errors.password}
 							variant="standard"
 							name="password"
+							type="password"
 						/>
 
 						<Box display="flex" mt={4}>
