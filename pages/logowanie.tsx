@@ -41,6 +41,13 @@ const Katalog: NextPage = () => {
 		return () => clearTimeout(id);
 	}, [loading]);
 
+	const handleChange = (e: React.ChangeEvent) => {
+		formik.handleChange(e);
+
+		// Hide login error message when typing
+		if (loginError) setLoginError(false);
+	};
+
 	return (
 		<>
 			<Head>
@@ -74,7 +81,7 @@ const Katalog: NextPage = () => {
 						<TextField
 							label="Login"
 							value={formik.values.login}
-							onChange={formik.handleChange}
+							onChange={handleChange}
 							error={formik.touched.login && Boolean(formik.errors.login)}
 							helperText={formik.touched.login && formik.errors.login}
 							variant="standard"
@@ -83,7 +90,7 @@ const Katalog: NextPage = () => {
 						<TextField
 							label="Hasło"
 							value={formik.values.password}
-							onChange={formik.handleChange}
+							onChange={handleChange}
 							error={formik.touched.password && Boolean(formik.errors.password)}
 							helperText={formik.touched.password && formik.errors.password}
 							variant="standard"
