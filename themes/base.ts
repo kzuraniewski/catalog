@@ -21,9 +21,13 @@ let theme = createTheme({
 			fontWeight: 400,
 			fontSize: 40,
 		},
+		h6: {
+			fontWeight: 500,
+			fontSize: 15,
+		},
 	},
 	shape: {
-		borderRadius: 2,
+		borderRadius: 6,
 	},
 	components: {
 		MuiButtonBase: {

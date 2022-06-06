@@ -2,6 +2,7 @@ import React from 'react';
 import { ListItem, ListItemButton, ListItemIcon, ListItemProps, ListItemText } from '@mui/material';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import theme from '../themes/base';
 
 export interface SidenavItemProps extends ListItemProps {
 	icon: React.ReactNode;
@@ -16,8 +17,24 @@ const SidenavLink = ({ icon, children, to, ...other }: SidenavItemProps) => {
 	return (
 		<ListItem disablePadding {...other}>
 			<Link href={to}>
-				<ListItemButton selected={router.asPath === to} component="a">
-					<ListItemIcon>{icon}</ListItemIcon>
+				<ListItemButton
+					selected={router.asPath === to}
+					component="a"
+					dense
+					sx={{
+						borderTopLeftRadius: theme.shape.borderRadius,
+						borderBottomLeftRadius: theme.shape.borderRadius,
+						ml: 1,
+						'&.Mui-selected': {
+							backgroundColor: 'primary.main',
+							color: 'primary.contrastText',
+							'&:hover': {
+								backgroundColor: 'primary.dark',
+							},
+						},
+					}}
+				>
+					<ListItemIcon sx={{ color: 'inherit' }}>{icon}</ListItemIcon>
 					<ListItemText primary={children} />
 				</ListItemButton>
 			</Link>
