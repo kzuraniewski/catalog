@@ -1,11 +1,10 @@
 import React from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { Grid } from '@mui/material';
 import useDocumentTitle from '../../hooks/useDocumentTitle';
 import Panel from '../../components/Panel';
-import DocumentCard from '../../components/DocumentCard';
 import { useRouter } from 'next/router';
+import Document from '../../components/Document';
 
 const Katalog: NextPage = () => {
 	const router = useRouter();
@@ -19,7 +18,9 @@ const Katalog: NextPage = () => {
 				<title>{title}</title>
 			</Head>
 
-			<Panel title={`Dokument nr. ${id}`}></Panel>
+			<Panel title={`Dokument nr. ${id}`}>
+				<Document src={`/${id}.pdf`} />
+			</Panel>
 		</>
 	);
 };
