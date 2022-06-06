@@ -30,7 +30,7 @@ let theme = createTheme({
 		},
 	},
 	shape: {
-		borderRadius: 6,
+		borderRadius: '6px',
 	},
 	components: {
 		MuiButtonBase: {
