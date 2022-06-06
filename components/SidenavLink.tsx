@@ -16,8 +16,20 @@ const SidenavLink = ({ icon, children, to, ...other }: SidenavItemProps) => {
 	return (
 		<ListItem disablePadding {...other}>
 			<Link href={to}>
-				<ListItemButton selected={router.asPath === to} component="a">
-					<ListItemIcon>{icon}</ListItemIcon>
+				<ListItemButton
+					selected={router.asPath === to}
+					component="a"
+					sx={{
+						'&.Mui-selected': {
+							backgroundColor: 'primary.main',
+							color: 'primary.contrastText',
+							'&:hover': {
+								backgroundColor: 'primary.dark',
+							},
+						},
+					}}
+				>
+					<ListItemIcon sx={{ color: 'inherit' }}>{icon}</ListItemIcon>
 					<ListItemText primary={children} />
 				</ListItemButton>
 			</Link>
