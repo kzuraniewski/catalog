@@ -19,6 +19,7 @@ const SidenavLink = ({ icon, children, to, ...other }: SidenavItemProps) => {
 				<ListItemButton
 					selected={router.asPath === to}
 					component="a"
+					dense
 					sx={{
 						'&.Mui-selected': {
 							backgroundColor: 'primary.main',
