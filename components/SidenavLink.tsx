@@ -2,6 +2,7 @@ import React from 'react';
 import { ListItem, ListItemButton, ListItemIcon, ListItemProps, ListItemText } from '@mui/material';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import theme from '../themes/base';
 
 export interface SidenavItemProps extends ListItemProps {
 	icon: React.ReactNode;
@@ -21,6 +22,9 @@ const SidenavLink = ({ icon, children, to, ...other }: SidenavItemProps) => {
 					component="a"
 					dense
 					sx={{
+						borderTopLeftRadius: theme.shape.borderRadius,
+						borderBottomLeftRadius: theme.shape.borderRadius,
+						ml: 1,
 						'&.Mui-selected': {
 							backgroundColor: 'primary.main',
 							color: 'primary.contrastText',

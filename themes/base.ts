@@ -23,7 +23,7 @@ let theme = createTheme({
 		},
 	},
 	shape: {
-		borderRadius: 2,
+		borderRadius: 6,
 	},
 	components: {
 		MuiButtonBase: {
