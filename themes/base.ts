@@ -24,9 +24,20 @@ let theme = createTheme({
 		h3: {
 			fontSize: 20,
 		},
+		h6: {
+			fontWeight: 500,
+			fontSize: 15,
+		},
 	},
 	shape: {
-		borderRadius: 2,
+		borderRadius: 6,
+	},
+	components: {
+		MuiButtonBase: {
+			defaultProps: {
+				disableTouchRipple: true,
+			},
+		},
 	},
 });
 
