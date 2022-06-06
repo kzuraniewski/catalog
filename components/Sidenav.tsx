@@ -48,7 +48,7 @@ const Sidenav = ({ ...other }: SidenavProps) => {
 					<Link href="mailto:czesci2@maszyny-frankopol.pl">
 						czesci2@maszyny-frankopol.pl
 					</Link>
-					<Link href="tel:535-881-0201">535-881-0201</Link>
+					<Link href="tel:535-881-0201">535-881-020</Link>
 					<Link href="tel:25-781-02-81">25 781-02-81</Link>
 				</Typography>
 			</Box>
