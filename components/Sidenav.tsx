@@ -34,7 +34,7 @@ const Sidenav = ({ ...other }: SidenavProps) => {
 				<Search InputBaseProps={{ placeholder: 'Szukaj dokumentu...' }} />
 
 				<List sx={{ mt: 1 }}>
-					<SidenavLink to="/" icon={<MenuBook />}>
+					<SidenavLink to="/katalog" icon={<MenuBook />}>
 						Katalog
 					</SidenavLink>
 					<SidenavLink to="/zapisane" icon={<Bookmark />}>
