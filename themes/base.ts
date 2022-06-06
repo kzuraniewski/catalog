@@ -25,6 +25,13 @@ let theme = createTheme({
 	shape: {
 		borderRadius: 2,
 	},
+	components: {
+		MuiButtonBase: {
+			defaultProps: {
+				disableTouchRipple: true,
+			},
+		},
+	},
 });
 
 // theme = responsiveFontSizes(theme);
