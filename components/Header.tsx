@@ -1,10 +1,11 @@
 import React from 'react';
-import { AppBar, Box, Toolbar } from '@mui/material';
+import { AppBar, Box, Button, Toolbar } from '@mui/material';
 import HeaderLink from './HeaderLink';
 import { drawerWidth } from './Sidenav';
 import { ArrowBack } from '@mui/icons-material';
 import UserMenu from './UserMenu';
 import useAuth from '../hooks/useAuth';
+import Link from 'next/link';
 // import logo from '../assets/logo.svg';
 
 const mainWebsiteUrl = 'http://agrofrankopol.strona-projekt.pl';
@@ -27,7 +28,20 @@ const Header = () => {
 				{user?.isLoggedIn ? (
 					<UserMenu />
 				) : (
-					<HeaderLink href="/logowanie">Zaloguj</HeaderLink>
+					<Link href="/logowanie">
+						<Button
+							href="/logowanie"
+							variant="contained"
+							sx={{
+								backgroundColor: 'secondary.main',
+								'&:hover': {
+									backgroundColor: 'secondary.dark',
+								},
+							}}
+						>
+							Zaloguj się
+						</Button>
+					</Link>
 				)}
 			</Toolbar>
 		</AppBar>
