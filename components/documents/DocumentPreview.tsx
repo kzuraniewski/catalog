@@ -1,11 +1,11 @@
 import { Box, BoxProps } from '@mui/material';
 import React from 'react';
 
-export interface DocumentProps extends BoxProps<'embed'> {
+export interface DocumentPreviewProps extends BoxProps<'embed'> {
 	src: string;
 }
 
-const Document = ({ ...other }: DocumentProps) => {
+const DocumentPreview = ({ ...other }: DocumentPreviewProps) => {
 	return (
 		<Box
 			component="embed"
@@ -16,4 +16,4 @@ const Document = ({ ...other }: DocumentProps) => {
 	);
 };
 
-export default Document;
+export default DocumentPreview;

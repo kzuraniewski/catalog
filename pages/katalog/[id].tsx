@@ -4,7 +4,7 @@ import Head from 'next/head';
 import useDocumentTitle from '../../hooks/useDocumentTitle';
 import Panel from '../../components/Panel';
 import { useRouter } from 'next/router';
-import Document from '../../components/Document';
+import { DocumentPreview } from '../../components/documents';
 
 const Katalog: NextPage = () => {
 	const router = useRouter();
@@ -19,7 +19,7 @@ const Katalog: NextPage = () => {
 			</Head>
 
 			<Panel title={`Dokument nr. ${id}`}>
-				<Document src={`/${id}.pdf`} />
+				<DocumentPreview src={`/${id}.pdf`} />
 			</Panel>
 		</>
 	);

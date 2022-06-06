@@ -4,7 +4,7 @@ import Head from 'next/head';
 import { Grid } from '@mui/material';
 import useDocumentTitle from '../../hooks/useDocumentTitle';
 import Panel from '../../components/Panel';
-import DocumentCard from '../../components/DocumentCard';
+import { DocumentCard } from '../../components/documents';
 
 const Katalog: NextPage = () => {
 	const { title } = useDocumentTitle();
