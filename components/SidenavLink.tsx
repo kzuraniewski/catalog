@@ -14,11 +14,13 @@ const SidenavLink = ({ icon, children, to, ...other }: SidenavItemProps) => {
 	//TODO: get router from context
 	const router = useRouter();
 
+	const isActive = router.pathname.substring(0, to.length) === to;
+
 	return (
 		<ListItem disablePadding {...other}>
 			<Link href={to}>
 				<ListItemButton
-					selected={router.asPath === to}
+					selected={isActive}
 					component="a"
 					dense
 					sx={{
