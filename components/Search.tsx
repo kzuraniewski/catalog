@@ -63,6 +63,7 @@ const Search = ({
 						width: '100%',
 					},
 				}}
+				fullWidth
 				{...InputBaseProps}
 			/>
 		</Box>
