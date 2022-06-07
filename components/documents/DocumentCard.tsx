@@ -18,7 +18,7 @@ const DocumentCard = ({ ...other }: DocumentCardProps) => {
 
 	return (
 		<Card {...other}>
-			<CardActionArea disableRipple href="#">
+			<CardActionArea disableRipple href="/katalog/test">
 				<CardContent>
 					<Typography variant="h3" sx={{ mb: 2 }}>
 						Lorem ipsum
