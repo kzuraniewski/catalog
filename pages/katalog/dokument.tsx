@@ -1,15 +1,23 @@
 import React from 'react';
-import type { NextPage } from 'next';
+import type { NextPage, GetStaticProps, InferGetStaticPropsType } from 'next';
 import Head from 'next/head';
 import useDocumentTitle from '../../hooks/useDocumentTitle';
 import Panel from '../../components/Panel';
-import { useRouter } from 'next/router';
 import { DocumentPreview } from '../../components/documents';
 
-const Katalog: NextPage = () => {
-	const router = useRouter();
-	const { id } = router.query;
+interface Props {
+	id: string | string[] | undefined;
+}
 
+export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
+	console.log(params);
+
+	return {
+		props: { id: JSON.parse(JSON.stringify(params?.id)) },
+	};
+};
+
+const Dokument: NextPage<Props> = ({ id }) => {
 	const { title } = useDocumentTitle(id?.toString());
 
 	return (
@@ -25,4 +33,4 @@ const Katalog: NextPage = () => {
 	);
 };
 
-export default Katalog;
+export default Dokument;
