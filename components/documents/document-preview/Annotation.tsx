@@ -3,11 +3,11 @@ import Link from 'next/link';
 import React from 'react';
 import theme from '../../../themes/base';
 
-export interface AdnotationProps {
+export interface AnnotationProps {
 	anchor: string;
 }
 
-const Adnotation = ({ anchor }: AdnotationProps) => {
+const Annotation = ({ anchor }: AnnotationProps) => {
 	return anchor[0] === '#' ? (
 		<Box position="relative">
 			<Link href={anchor}>
@@ -37,6 +37,6 @@ const Adnotation = ({ anchor }: AdnotationProps) => {
 	);
 };
 
-export default Adnotation;
+export default Annotation;
 
 //FIXME: Redundant divs over non-anchors
