@@ -63,3 +63,5 @@ const DocumentPreview = ({ file }: DocumentPreviewProps) => {
 };
 
 export default DocumentPreview;
+
+//FEATURE: Log errors
