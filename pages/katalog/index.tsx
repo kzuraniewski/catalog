@@ -1,10 +1,11 @@
 import React from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { Grid } from '@mui/material';
+import { Box, Grid } from '@mui/material';
 import useDocumentTitle from '../../hooks/useDocumentTitle';
 import Panel from '../../components/Panel';
 import { DocumentCard } from '../../components/documents';
+import Search from '../../components/Search';
 
 const Katalog: NextPage = () => {
 	const { title } = useDocumentTitle();
@@ -16,6 +17,11 @@ const Katalog: NextPage = () => {
 			</Head>
 
 			<Panel title="Wyszukiwarka maszyn">
+				{/* Searching, filters */}
+				<Box mb={5}>
+					<Search />
+				</Box>
+
 				<Grid container spacing={5}>
 					<Grid item xs={3}>
 						<DocumentCard />

@@ -31,9 +31,7 @@ const Sidenav = ({ ...other }: SidenavProps) => {
 			<Divider />
 
 			<Box flexGrow={1} my={2}>
-				<Search InputBaseProps={{ placeholder: 'Szukaj dokumentu...' }} />
-
-				<List sx={{ mt: 1 }}>
+				<List>
 					<SidenavLink to="/katalog" icon={<MenuBook />}>
 						Katalog
 					</SidenavLink>
