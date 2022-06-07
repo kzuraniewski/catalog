@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Document, Page } from 'react-pdf/dist/esm/entry.webpack5';
 import type { DocumentProps } from 'react-pdf';
-import { Box, Paper, Pagination } from '@mui/material';
+import { Box, Paper, Pagination, CircularProgress } from '@mui/material';
 
 export interface DocumentPreviewProps extends Pick<DocumentProps, 'file'> {}
 
@@ -11,7 +11,13 @@ const DocumentPreview = ({ file }: DocumentPreviewProps) => {
 
 	return (
 		<Box position="relative">
-			<Document file={file} onLoadSuccess={({ numPages }) => setPageCount(numPages)}>
+			<Document
+				file={file}
+				onLoadSuccess={({ numPages }) => setPageCount(numPages)}
+				error="Podczas ładowania dokumentu wystąpił błąd."
+				loading={<CircularProgress color="inherit" size={16} />}
+				noData="Nie wybrano pliku PDF."
+			>
 				<Paper
 					elevation={3}
 					sx={{
@@ -48,5 +54,3 @@ const DocumentPreview = ({ file }: DocumentPreviewProps) => {
 };
 
 export default DocumentPreview;
-
-//TODO: i18n
