@@ -3,6 +3,8 @@ import { Document, Page } from 'react-pdf/dist/esm/entry.webpack5';
 import type { DocumentProps } from 'react-pdf';
 import { Box, Paper, Pagination, CircularProgress } from '@mui/material';
 import Annotation from './Annotation';
+import Error from './Error';
+import Loading from './Loading';
 
 export interface DocumentPreviewProps extends Pick<DocumentProps, 'file'> {}
 
@@ -11,13 +13,13 @@ const DocumentPreview = ({ file }: DocumentPreviewProps) => {
 	const [pageCount, setPageCount] = useState(0);
 
 	return (
-		<Box position="relative">
+		<Box sx={{ position: 'relative', mx: 'auto', width: 'fit-content', minWidth: 300 }}>
 			<Document
 				file={file}
 				onLoadSuccess={({ numPages }) => setPageCount(numPages)}
-				error="Podczas ładowania dokumentu wystąpił błąd."
+				error={<Error message="Nie udało się załadować dokumentu." />}
 				loading={<CircularProgress color="inherit" size={16} />}
-				noData="Nie wybrano pliku PDF."
+				noData={<Error message="Nie wybrano pliku PDF." />}
 			>
 				<Paper
 					elevation={3}
@@ -30,9 +32,9 @@ const DocumentPreview = ({ file }: DocumentPreviewProps) => {
 				>
 					<Page
 						pageNumber={pageNumber}
-						error="Nie udało się załadować strony."
-						loading={<CircularProgress color="inherit" size={16} />}
-						noData="Nie wybrano strony."
+						error={<Error message="Nie udało się załadować strony." />}
+						loading={<Loading />}
+						noData={<Error message="Nie wybrano strony." />}
 						customTextRenderer={({ str }) => <Annotation anchor={str} />}
 					/>
 				</Paper>
