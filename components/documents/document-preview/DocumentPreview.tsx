@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Document, Page } from 'react-pdf/dist/esm/entry.webpack5';
 import type { DocumentProps } from 'react-pdf';
 import { Box, Paper, Pagination, CircularProgress } from '@mui/material';
+import Adnotation from './Adnotation';
 
 export interface DocumentPreviewProps extends Pick<DocumentProps, 'file'> {}
 
@@ -32,6 +33,7 @@ const DocumentPreview = ({ file }: DocumentPreviewProps) => {
 						error="Nie udało się załadować strony."
 						loading={<CircularProgress color="inherit" size={16} />}
 						noData="Nie wybrano strony."
+						customTextRenderer={({ str }) => <Adnotation anchor={str} />}
 					/>
 				</Paper>
 			</Document>
