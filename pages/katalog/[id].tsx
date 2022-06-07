@@ -19,7 +19,7 @@ const Katalog: NextPage = () => {
 			</Head>
 
 			<Panel title={`Dokument nr. ${id}`}>
-				<DocumentPreview src={`/${id}.pdf`} />
+				<DocumentPreview file={`/${id}.pdf`} />
 			</Panel>
 		</>
 	);

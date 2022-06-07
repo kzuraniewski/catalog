@@ -1,18 +1,13 @@
-import { Box, BoxProps } from '@mui/material';
+import dynamic from 'next/dynamic';
 import React from 'react';
+const DocumentPreviewInner = dynamic(import('./DocumentPreviewInner'), { ssr: false });
+import type { DocumentPreviewInnerProps } from './DocumentPreviewInner';
 
-export interface DocumentPreviewProps extends BoxProps<'embed'> {
-	src: string;
-}
-
-const DocumentPreview = ({ ...other }: DocumentPreviewProps) => {
+const DocumentPreview = ({ ...other }: DocumentPreviewInnerProps) => {
 	return (
-		<Box
-			component="embed"
-			type="application/pdf"
-			sx={{ width: '100%', height: 400 }}
-			{...other}
-		/>
+		<div>
+			<DocumentPreviewInner {...other} />
+		</div>
 	);
 };
 
