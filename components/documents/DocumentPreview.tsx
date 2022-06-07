@@ -1,13 +1,17 @@
-import dynamic from 'next/dynamic';
-import React from 'react';
-const DocumentPreviewInner = dynamic(import('./DocumentPreviewInner'), { ssr: false });
-import type { DocumentPreviewInnerProps } from './DocumentPreviewInner';
+import React, { useState } from 'react';
+import { Document, Page } from 'react-pdf/dist/esm/entry.webpack5';
+import type { DocumentProps } from 'react-pdf';
+// import { Document, Page, type DocumentProps } from 'react-pdf';
 
-const DocumentPreview = ({ ...other }: DocumentPreviewInnerProps) => {
+export interface DocumentPreviewProps extends DocumentProps {}
+
+const DocumentPreview = ({ file, ...other }: DocumentPreviewProps) => {
+	const [pageNumber, setPageNumber] = useState(1);
+
 	return (
-		<div>
-			<DocumentPreviewInner {...other} />
-		</div>
+		<Document file={file} {...other}>
+			<Page pageNumber={pageNumber} />
+		</Document>
 	);
 };
 
