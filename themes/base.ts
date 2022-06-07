@@ -1,4 +1,5 @@
 import { createTheme, responsiveFontSizes } from '@mui/material/styles';
+import { grey } from '@mui/material/colors';
 
 let theme = createTheme({
 	palette: {
@@ -13,6 +14,9 @@ let theme = createTheme({
 			light: '#b2dc6e',
 			dark: '#507b0a',
 			contrastText: '#000000',
+		},
+		background: {
+			paper: grey[50],
 		},
 	},
 	typography: {
