@@ -18,7 +18,7 @@ const Katalog: NextPage = () => {
 				<title>{title}</title>
 			</Head>
 
-			<Panel title={`Dokument nr. ${id}`}>
+			<Panel title={`Dokument nr. ${id}`} parentAnchor={'/katalog'}>
 				<DocumentPreview file={`/${id}.pdf`} />
 			</Panel>
 		</>
