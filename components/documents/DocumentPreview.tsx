@@ -27,7 +27,12 @@ const DocumentPreview = ({ file }: DocumentPreviewProps) => {
 						minHeight: 200,
 					}}
 				>
-					<Page pageNumber={pageNumber} />
+					<Page
+						pageNumber={pageNumber}
+						error="Nie udało się załadować strony."
+						loading={<CircularProgress color="inherit" size={16} />}
+						noData="Nie wybrano strony."
+					/>
 				</Paper>
 			</Document>
 
