@@ -2,7 +2,7 @@ import React from 'react';
 import { ListItem, ListItemButton, ListItemIcon, ListItemProps, ListItemText } from '@mui/material';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import theme from '../themes/base';
+import theme from '../theme';
 
 export interface SidenavItemProps extends ListItemProps {
 	icon: React.ReactNode;

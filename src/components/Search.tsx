@@ -1,7 +1,7 @@
 import { InputBase, Box, alpha, InputBaseProps, BoxProps } from '@mui/material';
 import { Search as SearchIcon } from '@mui/icons-material';
 import React from 'react';
-import theme from '../themes/base';
+import theme from '../theme';
 
 export interface SearchProps extends React.HTMLAttributes<HTMLElement> {
 	icon?: React.ReactNode;

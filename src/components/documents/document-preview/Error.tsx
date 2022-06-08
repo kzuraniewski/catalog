@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Button, Typography, type BoxProps, Link as MuiLink } from '@mui/material';
 import { Error as ErrorIcon } from '@mui/icons-material';
-import theme from '../../../themes/base';
+import theme from '../../../theme';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 

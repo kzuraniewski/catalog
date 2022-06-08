@@ -1,7 +1,7 @@
 import { Box, ButtonBase, Tooltip } from '@mui/material';
 import Link from 'next/link';
 import React from 'react';
-import theme from '../../../themes/base';
+import theme from '../../../theme';
 
 export interface AnnotationProps {
 	anchorName: string;
