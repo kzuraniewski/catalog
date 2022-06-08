@@ -1,12 +1,19 @@
 import React, { useState } from 'react';
 import { Document, Page } from 'react-pdf/dist/esm/entry.webpack5';
-import type { DocumentProps } from 'react-pdf';
+import type { DocumentProps, TextLayerItemInternal } from 'react-pdf';
 import { Box, Paper, Pagination, CircularProgress } from '@mui/material';
 import Annotation from './Annotation';
 import Error from './Error';
 import Loading from './Loading';
 
 export interface DocumentPreviewProps extends Pick<DocumentProps, 'file'> {}
+
+const textRenderer = ({ str }: TextLayerItemInternal) => {
+	//FIXME: Redundant divs over non-anchors
+	if (str[0] !== '#') return <div />;
+
+	return <Annotation anchorName={str.substring(1)} />;
+};
 
 const DocumentPreview = ({ file }: DocumentPreviewProps) => {
 	const [pageNumber, setPageNumber] = useState(1);
@@ -35,7 +42,7 @@ const DocumentPreview = ({ file }: DocumentPreviewProps) => {
 						error={<Error message="Nie udało się załadować strony." />}
 						loading={<Loading />}
 						noData={<Error message="Nie wybrano strony." />}
-						customTextRenderer={({ str }) => <Annotation anchor={str} />}
+						customTextRenderer={textRenderer}
 					/>
 				</Paper>
 			</Document>
