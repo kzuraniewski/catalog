@@ -18,7 +18,7 @@ const DocumentPreview = ({ file }: DocumentPreviewProps) => {
 				file={file}
 				onLoadSuccess={({ numPages }) => setPageCount(numPages)}
 				error={<Error message="Nie udało się załadować dokumentu." />}
-				loading={<CircularProgress color="inherit" size={16} />}
+				loading={<Loading />}
 				noData={<Error message="Nie wybrano pliku PDF." />}
 			>
 				<Paper
