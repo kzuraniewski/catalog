@@ -39,3 +39,5 @@ const Katalog: NextPage = () => {
 };
 
 export default Katalog;
+
+//TODO: remove `/dokument`
