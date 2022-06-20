@@ -5,6 +5,8 @@ import useDocumentTitle from '../../hooks/useDocumentTitle';
 import Panel from '../../components/Panel';
 import { DocumentPreview } from '../../components/documents';
 import { useRouter } from 'next/router';
+import DocumentInfo from '../../components/documents/DocumentInfo';
+import { Box } from '@mui/material';
 
 const Dokument: NextPage = () => {
 	const {
@@ -20,7 +22,13 @@ const Dokument: NextPage = () => {
 			</Head>
 
 			<Panel title={id?.toString() || 'Dokument bez nazwy'} parentAnchor={'/katalog'}>
-				<DocumentPreview file={`/${id}.pdf`} />
+				<Box sx={{ display: 'flex', gap: 5 }}>
+					<Box sx={{ minWidth: 500, flexShrink: 0 }}>
+						<DocumentPreview file={`/${id}.pdf`} />
+					</Box>
+
+					<DocumentInfo />
+				</Box>
 			</Panel>
 		</>
 	);
