@@ -15,7 +15,7 @@ const Logo = ({ ...other }: LogoProps) => {
 					alt="Logo"
 					priority
 					{...other}
-					src="/logo.png"
+					src="/logo.svg"
 				></Image>
 			</a>
 		</Link>
