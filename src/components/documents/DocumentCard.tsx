@@ -21,8 +21,8 @@ const DocumentCard = ({ ...other }: DocumentCardProps) => {
 
 	return (
 		<Card {...other}>
-			<Link href={`/katalog/dokument?id=${t}`}>
-				<CardActionArea disableRipple href={`/katalog/dokument?id=${t}`}>
+			<Link href={`/katalog/${t}`}>
+				<CardActionArea disableRipple href={`/katalog/${t}`}>
 					<CardContent>
 						<Typography variant="h3" sx={{ mb: 2 }}>
 							Lorem ipsum
