@@ -47,11 +47,9 @@ const Sidenav = ({ ...other }: SidenavProps) => {
 					Kontakt:
 				</Typography>
 				<Typography variant="body2" sx={{ display: 'flex', flexDirection: 'column' }}>
-					<Link href="mailto:czesci2@maszyny-frankopol.pl">
-						czesci2@maszyny-frankopol.pl
-					</Link>
-					<Link href="tel:535-881-0201">535-881-020</Link>
-					<Link href="tel:25-781-02-81">25 781-02-81</Link>
+					<Link href="mailto:foo.bar@baz.com">foo.bar@baz.com</Link>
+					<Link href="tel:555-555-5555">555-555-5555</Link>
+					<Link href="tel:123-123-1234">123-123-1234</Link>
 				</Typography>
 			</Box>
 		</Drawer>
