@@ -19,7 +19,7 @@ let theme = createTheme({
 			contrastText: '#000000',
 		},
 		background: {
-			paper: grey[50],
+			default: grey[50],
 		},
 	},
 	typography: {
