@@ -1,7 +1,6 @@
 import { Box, ButtonBase, Tooltip } from '@mui/material';
 import Link from 'next/link';
 import React from 'react';
-import theme from '../../../theme';
 
 export interface AnnotationProps {
 	anchorName: string;
@@ -15,7 +14,7 @@ const Annotation = ({ anchorName }: AnnotationProps) => {
 					<ButtonBase
 						href={`#${anchorName}`}
 						className="renderer"
-						sx={{
+						sx={theme => ({
 							position: 'absolute',
 							width: 17,
 							height: 17,
@@ -25,9 +24,9 @@ const Annotation = ({ anchorName }: AnnotationProps) => {
 							backgroundColor: 'secondary.main',
 							'&:hover': {
 								backgroundColor: 'secondary.light',
-								boxShadow: theme.shadows[1],
+								boxShadow: 1,
 							},
-						}}
+						})}
 					>
 						{anchorName}
 					</ButtonBase>

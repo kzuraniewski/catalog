@@ -1,7 +1,6 @@
 import { InputBase, Box, alpha, InputBaseProps, BoxProps } from '@mui/material';
 import { Search as SearchIcon } from '@mui/icons-material';
 import React from 'react';
-import theme from '../theme';
 
 export interface SearchProps extends React.HTMLAttributes<HTMLElement> {
 	icon?: React.ReactNode;
@@ -18,21 +17,21 @@ const Search = ({
 	return (
 		<Box
 			position="relative"
-			sx={{
+			sx={theme => ({
 				position: 'relative',
 				borderRadius: theme.shape.borderRadius,
 				backgroundColor: alpha(theme.palette.grey[400], 0.15),
 				'&:hover': {
 					backgroundColor: alpha(theme.palette.grey[400], 0.25),
 				},
-				marginRight: theme.spacing(2),
+				marginRight: 2,
 				marginLeft: 0,
 				width: '100%',
 				[theme.breakpoints.up('sm')]: {
-					marginLeft: theme.spacing(3),
+					marginLeft: 3,
 					width: 'auto',
 				},
-			}}
+			})}
 			{...other}
 		>
 			{/* Search icon wrapper */}
@@ -53,7 +52,7 @@ const Search = ({
 
 			<InputBase
 				placeholder="Szukaj..."
-				sx={{
+				sx={theme => ({
 					color: 'inherit',
 					'& .MuiInputBase-input': {
 						padding: theme.spacing(1, 1, 1, 0),
@@ -62,7 +61,7 @@ const Search = ({
 						transition: theme.transitions.create('width'),
 						width: '100%',
 					},
-				}}
+				})}
 				fullWidth
 				{...InputBaseProps}
 			/>

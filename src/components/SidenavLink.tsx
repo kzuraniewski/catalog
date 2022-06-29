@@ -2,7 +2,6 @@ import React from 'react';
 import { ListItem, ListItemButton, ListItemIcon, ListItemProps, ListItemText } from '@mui/material';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import theme from '../theme';
 
 export interface SidenavItemProps extends ListItemProps {
 	icon: React.ReactNode;
@@ -23,7 +22,7 @@ const SidenavLink = ({ icon, children, to, ...other }: SidenavItemProps) => {
 					selected={isActive}
 					component="a"
 					dense
-					sx={{
+					sx={theme => ({
 						borderTopLeftRadius: theme.shape.borderRadius,
 						borderBottomLeftRadius: theme.shape.borderRadius,
 						ml: 1,
@@ -34,7 +33,7 @@ const SidenavLink = ({ icon, children, to, ...other }: SidenavItemProps) => {
 								backgroundColor: 'primary.dark',
 							},
 						},
-					}}
+					})}
 				>
 					<ListItemIcon sx={{ color: 'inherit' }}>{icon}</ListItemIcon>
 					<ListItemText primary={children} />
