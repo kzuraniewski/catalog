@@ -46,7 +46,16 @@ const Sidenav = ({ ...other }: SidenavProps) => {
 				<Typography variant="h6" component="h2">
 					Kontakt:
 				</Typography>
-				<Typography variant="body2" sx={{ display: 'flex', flexDirection: 'column' }}>
+				<Typography
+					variant="body2"
+					sx={{
+						display: 'flex',
+						flexDirection: 'column',
+						'& .MuiLink-root': {
+							width: 'fit-content',
+						},
+					}}
+				>
 					<Link href="mailto:foo.bar@baz.com">foo.bar@baz.com</Link>
 					<Link href="tel:555-555-5555">555-555-5555</Link>
 					<Link href="tel:123-123-1234">123-123-1234</Link>
