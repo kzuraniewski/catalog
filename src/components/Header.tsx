@@ -32,12 +32,13 @@ const Header = () => {
 						<Button
 							href="/logowanie"
 							variant="contained"
-							sx={{
-								backgroundColor: 'secondary.main',
-								'&:hover': {
-									backgroundColor: 'secondary.dark',
-								},
-							}}
+							// sx={{
+							// 	backgroundColor: 'secondary.main',
+							// 	'&:hover': {
+							// 		backgroundColor: 'secondary.dark',
+							// 	},
+							// }}
+							color={'secondary'}
 						>
 							Zaloguj się
 						</Button>
