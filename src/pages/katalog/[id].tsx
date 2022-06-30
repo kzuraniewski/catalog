@@ -5,13 +5,16 @@ import useDocumentTitle from '../../hooks/useDocumentTitle';
 import Panel from '../../components/Panel';
 import { DocumentPreview } from '../../components/documents';
 import { useRouter } from 'next/router';
+import useFetch from '../../hooks/useFetch';
+import { type Document } from '../api/dokumenty';
 
 const Dokument: NextPage = () => {
 	const {
 		query: { id },
 	} = useRouter();
 
-	const { title } = useDocumentTitle(id?.toString());
+	const { data: document } = useFetch<Document>(`/api/dokumenty?id=${id}`);
+	const { title } = useDocumentTitle(document?.id);
 
 	return (
 		<>
@@ -20,7 +23,7 @@ const Dokument: NextPage = () => {
 			</Head>
 
 			<Panel title={id?.toString() || 'Dokument bez nazwy'} parentAnchor={'/katalog'}>
-				<DocumentPreview file={`/${id}.pdf`} />
+				<DocumentPreview file={document?.url} />
 			</Panel>
 		</>
 	);

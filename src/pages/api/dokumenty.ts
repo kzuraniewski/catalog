@@ -3,6 +3,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 
 export type Document = {
 	id: string;
+	url: string;
 	saved: boolean;
 	description?: string;
 };
@@ -19,6 +20,7 @@ const getRandomId = () => Math.floor(Math.random() * 999 + 1).toString() as Docu
 const getRandomDocData = (id: string = getRandomId()) =>
 	({
 		id,
+		url: `/mock-documents/${id}.pdf`,
 		description: Math.random() > 0.1 ? faker.lorem.sentences(2) : undefined,
 		saved: Math.random() > 0.9,
 	} as Document);
@@ -53,8 +55,14 @@ const randomDelay = (from: number, to: number) =>
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 	// Only GET allowed
 	if (req.method !== 'GET') res.status(405);
-
 	await randomDelay(200, 1000);
+
+	// If `id` is specified in query, return a single document data object
+	if (req.query.id) {
+		if (Array.isArray(req.query.id)) res.status(404);
+
+		res.status(200).json(getRandomDocData(req.query.id as string));
+	}
 
 	res.status(200).json(getRandomDocs());
 };
