@@ -20,7 +20,7 @@ const DocumentCard = ({ ...other }: DocumentCardProps) => {
 	const t = Math.floor(Math.random() * 1000);
 
 	return (
-		<Card {...other}>
+		<Card sx={{ width: 270 }} {...other}>
 			<Link href={`/katalog/${t}`}>
 				<CardActionArea disableRipple href={`/katalog/${t}`}>
 					<CardContent>
