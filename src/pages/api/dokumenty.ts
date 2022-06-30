@@ -23,10 +23,10 @@ const getRandomDocData = (id: string = getRandomId()) =>
 		saved: Math.random() > 0.9,
 	} as Document);
 
-const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-	// Only GET allowed
-	if (req.method !== 'GET') res.status(405);
-
+/**
+ * Generates an array of randomly generated documents
+ */
+const getRandomDocs = () => {
 	const generatedDocs: Document[] = [];
 	// Random amnount of documents between 5 and 20
 	const amount = Math.floor(Math.random() * 15 + 5);
@@ -36,15 +36,27 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 		generatedDocs.push(getRandomDocData());
 	}
 
-	// Random delay between 200 and 1000 miliseconds
-	await new Promise<void>(res => {
+	return generatedDocs;
+};
+
+/**
+ * Returns a promise that resolves after random amount of miliseconds in given range
+ */
+const randomDelay = (from: number, to: number) =>
+	new Promise<void>(res => {
 		const id = setTimeout(() => {
 			res();
 			clearTimeout(id);
-		}, Math.floor(Math.random() * 800 + 200));
+		}, Math.floor(Math.random() * (to - from) + from));
 	});
 
-	res.status(200).json(generatedDocs);
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+	// Only GET allowed
+	if (req.method !== 'GET') res.status(405);
+
+	await randomDelay(200, 1000);
+
+	res.status(200).json(getRandomDocs());
 };
 
 export default handler;
