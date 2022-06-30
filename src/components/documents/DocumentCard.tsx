@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import {
 	Button,
 	Card,
@@ -12,25 +12,41 @@ import {
 import { BookmarkAdd, BookmarkRemove } from '@mui/icons-material';
 import Link from 'next/link';
 
-export interface DocumentCardProps extends CardProps {}
+export interface DocumentCardProps extends CardProps {
+	id: string;
+	saved: boolean;
+	description?: string;
+	onSaveChange?: () => any;
+}
 
-const DocumentCard = ({ ...other }: DocumentCardProps) => {
-	const [saved, setSaved] = useState(false);
-
-	const t = Math.floor(Math.random() * 1000);
-
+const DocumentCard = ({ id, description, saved, onSaveChange, ...other }: DocumentCardProps) => {
 	return (
-		<Card sx={{ width: 270 }} {...other}>
-			<Link href={`/katalog/${t}`}>
-				<CardActionArea disableRipple href={`/katalog/${t}`}>
+		<Card sx={{ width: 270, display: 'flex', flexDirection: 'column' }} {...other}>
+			<Link href={`/katalog/${id}`}>
+				<CardActionArea
+					disableRipple
+					href=""
+					sx={{
+						flexGrow: 1,
+						alignItems: 'flex-start',
+						display: 'inline-flex',
+						justifyContent: 'flex-start',
+					}}
+				>
 					<CardContent>
 						<Typography variant="h3" sx={{ mb: 2 }}>
-							Lorem ipsum
+							{id}
 						</Typography>
-						<Typography variant="body1">
-							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam
-							placeat exercitationem nisi consectetur.
-						</Typography>
+						{description ? (
+							<Typography variant="body1">{description}</Typography>
+						) : (
+							<Typography
+								variant="body1"
+								sx={{ color: theme => theme.palette.grey[500] }}
+							>
+								Brak opisu
+							</Typography>
+						)}
 					</CardContent>
 				</CardActionArea>
 			</Link>
@@ -39,7 +55,9 @@ const DocumentCard = ({ ...other }: DocumentCardProps) => {
 			<CardActions>
 				<Button
 					startIcon={saved ? <BookmarkRemove /> : <BookmarkAdd />}
-					onClick={() => setSaved(saved => !saved)}
+					onClick={() => {
+						if (onSaveChange) onSaveChange();
+					}}
 				>
 					{saved ? 'Usuń z zapisanych' : 'Zapisz'}
 				</Button>

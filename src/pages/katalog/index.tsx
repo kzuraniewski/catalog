@@ -1,14 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { Box, Grid } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 import useDocumentTitle from '../../hooks/useDocumentTitle';
 import Panel from '../../components/Panel';
-import { DocumentCard } from '../../components/documents';
 import Search from '../../components/Search';
+import { DocumentCard } from '../../components/documents';
+import Loading from '../../components/Loading';
+import { type Document } from '../api/dokumenty';
 
 const Katalog: NextPage = () => {
+	const [documents, setDocuments] = useState<Document[] | null>(null);
+	const [error, setError] = useState(false);
+
 	const { title } = useDocumentTitle();
+
+	useEffect(() => {
+		fetch('/api/dokumenty')
+			.then(res => res.json())
+			.then(documents => setDocuments(documents))
+			.catch(() => setError(false));
+	}, []);
 
 	return (
 		<>
@@ -22,20 +34,32 @@ const Katalog: NextPage = () => {
 					<Search />
 				</Box>
 
-				<Box
-					sx={{
-						display: 'flex',
-						flexWrap: 'wrap',
-						gap: 4,
-						width: 'fit-content',
-					}}
-				>
-					<DocumentCard />
-					<DocumentCard />
-					<DocumentCard />
-					<DocumentCard />
-					<DocumentCard />
-				</Box>
+				{!documents && error && (
+					<Typography
+						variant="body2"
+						align="center"
+						mt={10}
+						color={theme => theme.palette.grey[600]}
+					>
+						Nie znaleziono dokumentów
+					</Typography>
+				)}
+				{!documents && !error && <Loading />}
+
+				{documents && (
+					<Box
+						sx={{
+							display: 'flex',
+							flexWrap: 'wrap',
+							gap: 4,
+							width: 'fit-content',
+						}}
+					>
+						{documents.map((docData, index) => (
+							<DocumentCard key={index} {...docData} />
+						))}
+					</Box>
+				)}
 			</Panel>
 		</>
 	);
