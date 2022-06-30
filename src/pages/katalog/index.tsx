@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import { Box, Grid, Typography } from '@mui/material';
@@ -8,19 +8,11 @@ import Search from '../../components/Search';
 import { DocumentCard } from '../../components/documents';
 import Loading from '../../components/Loading';
 import { type Document } from '../api/dokumenty';
+import useFetch from '../../hooks/useFetch';
 
 const Katalog: NextPage = () => {
-	const [documents, setDocuments] = useState<Document[] | null>(null);
-	const [error, setError] = useState(false);
-
 	const { title } = useDocumentTitle();
-
-	useEffect(() => {
-		fetch('/api/dokumenty')
-			.then(res => res.json())
-			.then(documents => setDocuments(documents))
-			.catch(() => setError(false));
-	}, []);
+	const { error, data: documents } = useFetch<Document[]>('/api/dokumenty');
 
 	return (
 		<>
