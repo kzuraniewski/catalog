@@ -22,22 +22,23 @@ const Katalog: NextPage = () => {
 					<Search />
 				</Box>
 
-				<Grid container spacing={5}>
-					<Grid item xs={3}>
-						<DocumentCard />
-					</Grid>
-					<Grid item xs={3}>
-						<DocumentCard />
-					</Grid>
-					<Grid item xs={3}>
-						<DocumentCard />
-					</Grid>
-				</Grid>
+				<Box
+					sx={{
+						display: 'flex',
+						flexWrap: 'wrap',
+						gap: 4,
+						width: 'fit-content',
+					}}
+				>
+					<DocumentCard />
+					<DocumentCard />
+					<DocumentCard />
+					<DocumentCard />
+					<DocumentCard />
+				</Box>
 			</Panel>
 		</>
 	);
 };
 
 export default Katalog;
-
-//TODO: remove `/dokument`

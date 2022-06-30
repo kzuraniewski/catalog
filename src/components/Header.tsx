@@ -6,7 +6,6 @@ import { ArrowBack } from '@mui/icons-material';
 import UserMenu from './UserMenu';
 import useAuth from '../hooks/useAuth';
 import Link from 'next/link';
-// import logo from '../assets/logo.svg';
 
 const mainWebsiteUrl = 'http://agrofrankopol.strona-projekt.pl';
 
@@ -29,16 +28,7 @@ const Header = () => {
 					<UserMenu />
 				) : (
 					<Link href="/logowanie">
-						<Button
-							href="/logowanie"
-							variant="contained"
-							sx={{
-								backgroundColor: 'secondary.main',
-								'&:hover': {
-									backgroundColor: 'secondary.dark',
-								},
-							}}
-						>
+						<Button href="/logowanie" variant="contained" color="secondary">
 							Zaloguj się
 						</Button>
 					</Link>
