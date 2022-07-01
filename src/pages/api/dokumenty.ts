@@ -54,14 +54,17 @@ const randomDelay = (from: number, to: number) =>
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 	// Only GET allowed
-	if (req.method !== 'GET') res.status(405);
+	if (req.method !== 'GET') res.status(405).end(`Metoda ${req.method} nie jest dozwolona`);
+
 	await randomDelay(200, 1000);
 
 	// If `id` is specified in query, return a single document data object
 	if (req.query.id) {
-		if (Array.isArray(req.query.id)) res.status(404);
+		if (Array.isArray(req.query.id))
+			res.status(404).end(`Użytkownik o id ${req.query.id} nie istnieje`);
 
 		res.status(200).json(getRandomDocData(req.query.id as string));
+		return;
 	}
 
 	res.status(200).json(getRandomDocs());
