@@ -7,13 +7,18 @@ import { DocumentPreview } from '../../components/documents';
 import { useRouter } from 'next/router';
 import DocumentInfo from '../../components/documents/DocumentInfo';
 import { Box } from '@mui/material';
+import useFetch from '../../hooks/useFetch';
+import { type Document } from '../api/dokumenty';
 
 const Dokument: NextPage = () => {
 	const {
 		query: { id },
 	} = useRouter();
 
-	const { title } = useDocumentTitle(id?.toString());
+	const { data: document } = useFetch<Document>(`/api/dokumenty?id=${id}`);
+	const { title } = useDocumentTitle(document?.id);
+
+	console.log(document);
 
 	return (
 		<>
@@ -24,7 +29,7 @@ const Dokument: NextPage = () => {
 			<Panel title={id?.toString() || 'Dokument bez nazwy'} parentAnchor={'/katalog'}>
 				<Box sx={{ display: 'flex', gap: 5 }}>
 					<Box sx={{ minWidth: 500, flexShrink: 0 }}>
-						<DocumentPreview file={`/${id}.pdf`} />
+						<DocumentPreview file={document?.url} />
 					</Box>
 
 					<DocumentInfo />
