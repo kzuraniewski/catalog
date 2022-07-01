@@ -11,7 +11,7 @@ const range = Math.floor(Math.random() * 29 + 1);
 
 for (let i = 0; i < range; i++) {
 	rows.push({
-		id: faker.database.column(),
+		id: faker.random.numeric(5),
 		name: faker.lorem.words(2),
 		description: faker.lorem.words(5),
 	});
