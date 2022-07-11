@@ -1,2 +1,2 @@
-export { default as DocumentPreview } from './document-preview';
-export { default as DocumentCard } from './DocumentCard';
+export { default as DocumentPreview, type DocumentPreviewProps } from './document-preview';
+export { default as DocumentCard, type DocumentCardProps } from './DocumentCard';

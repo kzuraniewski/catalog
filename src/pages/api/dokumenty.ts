@@ -1,11 +1,37 @@
 import { faker } from '@faker-js/faker';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
+export type ElementInfo = {
+	id: string;
+	name: string;
+	description: string;
+};
+
 export type Document = {
 	id: string;
 	url: string;
 	saved: boolean;
 	description?: string;
+	elements: ElementInfo[];
+};
+
+/**
+ * Generates a list of random document elements
+ */
+const getRandomElements = () => {
+	// Random amount of elements between 5 and 20
+	const amount = Math.floor(Math.random() * 15 + 5);
+	const elements: ElementInfo[] = [];
+
+	for (let i = 0; i < amount; i++) {
+		elements.push({
+			id: faker.random.numeric(5),
+			name: faker.lorem.words(2),
+			description: faker.lorem.words(Math.floor(Math.random() * 20)),
+		});
+	}
+
+	return elements;
 };
 
 /**
@@ -23,6 +49,7 @@ const getRandomDocData = (id: string = getRandomId()) =>
 		url: `/mock-documents/${id}.pdf`,
 		description: Math.random() > 0.1 ? faker.lorem.sentences(2) : undefined,
 		saved: Math.random() > 0.9,
+		elements: getRandomElements(),
 	} as Document);
 
 /**
