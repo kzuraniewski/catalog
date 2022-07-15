@@ -43,7 +43,7 @@ let theme = createTheme({
 		MuiCssBaseline: {
 			styleOverrides: {
 				body: {
-					'scroll-behavior': 'smooth',
+					scrollBehavior: 'smooth',
 				},
 			},
 		},
