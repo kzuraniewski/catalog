@@ -11,7 +11,7 @@ import { type Document } from '../api/dokumenty';
 import useFetch from '../../hooks/useFetch';
 
 const Katalog: NextPage = () => {
-	const { title } = useDocumentTitle();
+	const { title } = useDocumentTitle('Wyszukiwarka dokumentów');
 	const { error, data: documents } = useFetch<Document[]>('/api/dokumenty');
 
 	return (
@@ -20,7 +20,7 @@ const Katalog: NextPage = () => {
 				<title>{title}</title>
 			</Head>
 
-			<Panel title="Wyszukiwarka maszyn">
+			<Panel title="Wyszukiwarka dokumentów">
 				{/* Searching, filters */}
 				<Box mb={5}>
 					<Search />
