@@ -7,7 +7,7 @@ import UserMenu from './UserMenu';
 import useAuth from '../hooks/useAuth';
 import Link from 'next/link';
 
-const mainWebsiteUrl = 'http://agrofrankopol.strona-projekt.pl';
+const mainWebsiteUrl = '#';
 
 const Header = () => {
 	const { user } = useAuth();
