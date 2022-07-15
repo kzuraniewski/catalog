@@ -15,15 +15,21 @@ const getRandomId = () => Math.floor(Math.random() * 999 + 1).toString() as Docu
 
 /**
  * Generates random document data
- * @param id - custom id can be passed
+ * @param data - custom object can be passed with properties to override
  */
-const getRandomDocData = (id: string = getRandomId()) =>
-	({
+const getRandomDocData = (data?: Partial<Document>) => {
+	const id = getRandomId();
+	const initial: Document = {
 		id,
 		url: `/mock-documents/${id}.pdf`,
 		description: Math.random() > 0.1 ? faker.lorem.sentences(2) : undefined,
 		saved: Math.random() > 0.9,
-	} as Document);
+	};
+
+	if (!data) return initial;
+
+	return Object.assign(initial, data);
+};
 
 /**
  * Generates an array of randomly generated documents
@@ -52,6 +58,19 @@ const randomDelay = (from: number, to: number) =>
 		}, Math.floor(Math.random() * (to - from) + from));
 	});
 
+const mockDocs: Document[] = [
+	getRandomDocData({
+		id: 'test',
+		url: '/mock-documents/test.pdf',
+		description: 'Przykładowy dokument bez odnośników oraz z jedną stroną.',
+	}),
+	getRandomDocData({
+		id: 'test2',
+		url: '/mock-documents/test2.pdf',
+		description: 'Przykładowy dokument zawierający odnośniki oraz dwie strony.',
+	}),
+];
+
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 	// Only GET allowed
 	if (req.method !== 'GET') res.status(405).end(`Metoda ${req.method} nie jest dozwolona`);
@@ -63,11 +82,15 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 		if (Array.isArray(req.query.id))
 			res.status(404).end(`Użytkownik o id ${req.query.id} nie istnieje`);
 
-		res.status(200).json(getRandomDocData(req.query.id as string));
+		const mockFromId = mockDocs.find(doc => doc.id === req.query.id);
+
+		res.status(200).json(mockFromId ?? getRandomDocData({ id: req.query.id as string }));
 		return;
 	}
 
-	res.status(200).json(getRandomDocs());
+	// Return an array with known document mocks as the first elements,
+	// joined with some random data
+	res.status(200).json(mockDocs.concat(getRandomDocs()));
 };
 
 export default handler;
