@@ -71,3 +71,5 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 };
 
 export default handler;
+
+// TODO: Update response type to be an object with message key
