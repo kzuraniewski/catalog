@@ -37,9 +37,16 @@ let theme = createTheme({
 		},
 	},
 	shape: {
-		borderRadius: '6px',
+		borderRadius: 6,
 	},
 	components: {
+		MuiCssBaseline: {
+			styleOverrides: {
+				body: {
+					'scroll-behavior': 'smooth',
+				},
+			},
+		},
 		MuiButtonBase: {
 			defaultProps: {
 				disableTouchRipple: true,
