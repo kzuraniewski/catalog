@@ -31,13 +31,21 @@ const DocumentPreview = ({ file, annotationRenderer }: DocumentPreviewProps) => 
 						minHeight: 200,
 					}}
 				>
-					<Page
-						pageNumber={pageNumber}
-						error={<Error message="Nie udało się załadować strony." />}
-						loading={<Loading />}
-						noData={<Error message="Nie wybrano strony." />}
-						customTextRenderer={annotationRenderer}
-					/>
+					{Array.from({ length: pageCount }, (_el, index) => index + 1).map(num => (
+						// Render Page component as a Box to use `sx`
+						<Box
+							key={num}
+							component={Page}
+							pageNumber={num}
+							error={<Error message="Nie udało się załadować strony." />}
+							loading={<Loading />}
+							noData={<Error message="Nie wybrano strony." />}
+							customTextRenderer={annotationRenderer}
+							sx={{
+								display: num === pageNumber ? 'block' : 'none',
+							}}
+						/>
+					))}
 				</Paper>
 			</Document>
 
