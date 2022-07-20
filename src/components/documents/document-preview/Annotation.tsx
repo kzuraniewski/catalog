@@ -8,37 +8,31 @@ export interface AnnotationProps extends BoxProps {
 
 const Annotation = ({ anchorName, highlighted = false, ...other }: AnnotationProps) => {
 	return (
-		<Box position="relative" {...other}>
-			<Box
-				className="renderer"
-				sx={theme => ({
-					position: 'absolute',
-					userSelect: 'none',
-					display: 'flex',
-					justifyContent: 'center',
-					alignItems: 'center',
+		<Box
+			className="renderer"
+			sx={theme => ({
+				position: 'absolute',
+				userSelect: 'none',
+				display: 'flex',
+				justifyContent: 'center',
+				alignItems: 'center',
 
-					width: '1.2rem',
-					height: '1.2rem',
-					transform: 'translate(-0.2rem, -0.2rem)',
+				width: '1.2rem',
+				height: '1.2rem',
+				transform: 'translate(-0.2rem, -0.2rem)',
 
-					transition: 'background-color 0.1s, box-shadow 0.1s',
-					color: 'secondary.contrastText',
-					borderRadius: theme.shape.borderRadius,
+				transition: 'background-color 0.1s, box-shadow 0.1s',
+				color: 'secondary.contrastText',
+				borderRadius: theme.shape.borderRadius,
 
-					backgroundColor: 'secondary.main',
-					boxShadow: 0,
-					'&:hover, &[data-highlighted]': {
-						backgroundColor: 'secondary.light',
-						boxShadow: 1,
-					},
-				})}
-				data-highlighted={highlighted || null}
-			>
-				<Typography variant="button" align="center">
-					{anchorName}
-				</Typography>
-			</Box>
+				backgroundColor: highlighted ? 'secondary.light' : 'secondary.main',
+				boxShadow: Number(highlighted),
+			})}
+			{...other}
+		>
+			<Typography variant="button" align="center">
+				{anchorName}
+			</Typography>
 		</Box>
 	);
 };

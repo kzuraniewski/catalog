@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import useDocumentTitle from '../../hooks/useDocumentTitle';
@@ -13,15 +13,6 @@ import Annotation from '../../components/documents/document-preview/Annotation';
 
 type Anchor = string | null;
 
-const getAnnotationRenderer = (activeAnchor?: Anchor) =>
-	(({ str }) => {
-		//FIXME: Redundant divs over non-anchors
-		if (str[0] !== '#') return <div />;
-		const anchorName = str.substring(1);
-
-		return <Annotation anchorName={anchorName} highlighted={activeAnchor === anchorName} />;
-	}) as DocumentPreviewProps['annotationRenderer'];
-
 const Dokument: NextPage = () => {
 	const {
 		query: { id },
@@ -31,6 +22,25 @@ const Dokument: NextPage = () => {
 	const { title } = useDocumentTitle(document?.id);
 
 	const [activeAnchor, setActiveAnchor] = useState<Anchor>(null);
+
+	const getAnnotationRenderer = useCallback(
+		(activeAnchor?: Anchor) =>
+			(({ str }) => {
+				//FIXME: Redundant divs over non-anchors
+				if (str[0] !== '#') return <div />;
+				const anchorName = str.substring(1);
+
+				return (
+					<Annotation
+						anchorName={anchorName}
+						highlighted={activeAnchor === anchorName}
+						onMouseEnter={() => setActiveAnchor(anchorName)}
+						onMouseLeave={() => setActiveAnchor(null)}
+					/>
+				);
+			}) as DocumentPreviewProps['annotationRenderer'],
+		[]
+	);
 
 	return (
 		<>
