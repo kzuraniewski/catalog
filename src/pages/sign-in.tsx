@@ -2,7 +2,15 @@ import React, { useEffect, useState } from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import useDocumentTitle from '../hooks/useDocumentTitle';
-import { Box, Paper, TextField, Typography, Link as MuiLink } from '@mui/material';
+import {
+	Box,
+	Paper,
+	TextField,
+	Typography,
+	Link as MuiLink,
+	Checkbox,
+	FormControlLabel,
+} from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
@@ -19,6 +27,7 @@ const SignIn: NextPage = () => {
 		initialValues: {
 			email: '',
 			password: '',
+			remember: true,
 		},
 		validationSchema,
 		onSubmit: values => {
@@ -99,17 +108,33 @@ const SignIn: NextPage = () => {
 							type="password"
 						/>
 
-						<Box display="flex" mt={4}>
-							<Typography sx={{ flexGrow: 1 }}>
+						<Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 3 }}>
+							<FormControlLabel
+								control={
+									<Checkbox
+										checked={formik.values.remember}
+										onChange={handleChange}
+										name="remember"
+									/>
+								}
+								label="Remember me"
+							/>
+
+							<Typography sx={{ display: 'flex', alignItems: 'center' }}>
 								<Link href="#">
 									<MuiLink href="#">Forgot password?</MuiLink>
 								</Link>
 							</Typography>
-
-							<LoadingButton loading={loading} variant="contained" type="submit">
-								Sign in
-							</LoadingButton>
 						</Box>
+
+						<LoadingButton
+							loading={loading}
+							variant="contained"
+							type="submit"
+							sx={{ ml: 'auto' }}
+						>
+							Sign in
+						</LoadingButton>
 					</Box>
 				</form>
 			</Paper>
