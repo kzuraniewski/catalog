@@ -1,5 +1,4 @@
-import { Box, BoxProps, ButtonBase, Tooltip } from '@mui/material';
-import Link from 'next/link';
+import { Box, BoxProps, Tooltip, Typography } from '@mui/material';
 import React from 'react';
 
 export interface AnnotationProps extends BoxProps {
@@ -10,36 +9,42 @@ export interface AnnotationProps extends BoxProps {
 const Annotation = ({ anchorName, highlighted = false, ...other }: AnnotationProps) => {
 	return (
 		<Box position="relative" {...other}>
-			<Link href={`#${anchorName}`}>
-				<Tooltip title={`Odnośnik ${anchorName}`} placement="top" arrow>
-					<ButtonBase
-						href={`#${anchorName}`}
-						className="renderer"
-						sx={theme => ({
-							position: 'absolute',
-							width: 17,
-							height: 17,
-							transition: 'color 0.1s',
-							color: 'secondary.contrastText',
-							borderRadius: theme.shape.borderRadius,
-							backgroundColor: 'secondary.main',
-							'&:hover': {
-								backgroundColor: 'secondary.light',
-								boxShadow: 1,
-							},
-							'&:target': {
-								border: '1px solid red',
-							},
-							outline: theme =>
-								highlighted ? `2px solid ${theme.palette.primary.light}` : 'none',
-						})}
-					>
+			<Tooltip title={`Odnośnik ${anchorName}`} placement="top" arrow>
+				<Box
+					className="renderer"
+					sx={theme => ({
+						position: 'absolute',
+						userSelect: 'none',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						width: '1.2rem',
+						height: '1.2rem',
+						transform: 'translate(-0.2rem, -0.2rem)',
+
+						transition: 'color 0.1s',
+						color: 'secondary.contrastText',
+						borderRadius: theme.shape.borderRadius,
+						backgroundColor: 'secondary.main',
+						outline: theme =>
+							highlighted ? `2px solid ${theme.palette.primary.light}` : 'none',
+
+						'&:hover': {
+							backgroundColor: 'secondary.light',
+							boxShadow: 1,
+						},
+					})}
+				>
+					<Typography variant="button" align="center">
 						{anchorName}
-					</ButtonBase>
-				</Tooltip>
-			</Link>
+					</Typography>
+				</Box>
+			</Tooltip>
 		</Box>
 	);
 };
 
 export default Annotation;
+
+// TODO: Display element's name as a Tooltip on hover
