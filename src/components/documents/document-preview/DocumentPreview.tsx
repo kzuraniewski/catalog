@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Document, Page } from 'react-pdf/dist/esm/entry.webpack5';
 import type { DocumentProps } from 'react-pdf';
-import { Box, Paper, Pagination, CircularProgress } from '@mui/material';
+import { Box, Paper, Pagination } from '@mui/material';
 import Error from './Error';
 import Loading from './Loading';
 

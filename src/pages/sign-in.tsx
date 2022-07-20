@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import useDocumentTitle from '../hooks/useDocumentTitle';
-import Panel from '../components/Panel';
 import { Box, Paper, TextField, Typography, Link as MuiLink } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 import { useFormik } from 'formik';

@@ -3,7 +3,6 @@ import { Drawer, Divider, Box, List, Typography, Link } from '@mui/material';
 import { Bookmark, MenuBook } from '@mui/icons-material';
 import Logo from './Logo';
 import SidenavLink from './SidenavLink';
-import Search from './Search';
 
 export interface SidenavProps extends React.HTMLAttributes<HTMLElement> {}
 

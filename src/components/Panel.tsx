@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Divider, Paper, PaperProps, Typography } from '@mui/material';
+import { Button, Divider, Typography } from '@mui/material';
 import { ArrowBack } from '@mui/icons-material';
 import Link from 'next/link';
 

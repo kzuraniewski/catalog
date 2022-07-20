@@ -1,7 +1,7 @@
 import React from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { Box, Grid, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import useDocumentTitle from '../../hooks/useDocumentTitle';
 import Panel from '../../components/Panel';
 import Search from '../../components/Search';
