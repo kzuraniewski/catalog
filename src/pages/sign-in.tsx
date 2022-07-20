@@ -57,6 +57,7 @@ const SignIn: NextPage = () => {
 				sx={{
 					p: 3,
 					mx: 'auto',
+					mb: 2,
 					maxWidth: 600,
 				}}
 			>
@@ -112,6 +113,13 @@ const SignIn: NextPage = () => {
 					</Box>
 				</form>
 			</Paper>
+
+			<Typography align="center">
+				Not registered yet?{' '}
+				<Link href="#">
+					<MuiLink href="#">Create an Account</MuiLink>
+				</Link>
+			</Typography>
 		</>
 	);
 };
