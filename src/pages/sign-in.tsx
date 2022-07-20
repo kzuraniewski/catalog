@@ -1,15 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import type { NextPage } from 'next';
+import Image from 'next/image';
+import googleIcon from '../../public/icon-google.svg';
 import Head from 'next/head';
 import useDocumentTitle from '../hooks/useDocumentTitle';
-import { Box, Paper, TextField, Typography, Link as MuiLink } from '@mui/material';
+import {
+	Box,
+	Paper,
+	TextField,
+	Typography,
+	Link as MuiLink,
+	Checkbox,
+	FormControlLabel,
+	Divider,
+	Button,
+} from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import Link from 'next/link';
 
 const validationSchema = yup.object({
-	login: yup.string().required('This field is required.'),
+	email: yup.string().required('This field is required.'),
 	password: yup.string().required('This field is required.'),
 });
 
@@ -17,8 +29,9 @@ const SignIn: NextPage = () => {
 	const { title } = useDocumentTitle('Sign in');
 	const formik = useFormik({
 		initialValues: {
-			login: '',
+			email: '',
 			password: '',
+			remember: true,
 		},
 		validationSchema,
 		onSubmit: values => {
@@ -55,14 +68,27 @@ const SignIn: NextPage = () => {
 
 			<Paper
 				sx={{
-					p: 3,
+					px: 5,
+					py: 3,
 					mx: 'auto',
-					maxWidth: 600,
+					mb: 2,
+					maxWidth: 500,
 				}}
 			>
-				<Typography variant="h1" sx={{ mb: 4 }}>
+				<Typography variant="h1" sx={{ mb: 1 }}>
 					Sign in
 				</Typography>
+				<Typography sx={theme => ({ mb: 5, color: theme.palette.grey[600] })}>
+					Welcome back! Please enter your details.
+				</Typography>
+
+				<Button fullWidth variant="outlined" startIcon={<Image src={googleIcon} alt="" />}>
+					Sign in with Google
+				</Button>
+
+				<Divider sx={theme => ({ mt: 4, mb: 1, color: theme.palette.text.disabled })}>
+					or
+				</Divider>
 
 				<form onSubmit={formik.handleSubmit}>
 					<Box display="flex" flexDirection="column" gap={2}>
@@ -72,19 +98,20 @@ const SignIn: NextPage = () => {
 								sx={{ backgroundColor: 'error.main', py: 0.3, px: 1 }}
 							>
 								<Typography sx={{ color: 'error.contrastText' }}>
-									Invalid login or password
+									Invalid email or password
 								</Typography>
 							</Paper>
 						)}
 
 						<TextField
-							label="Login"
-							value={formik.values.login}
+							label="Email"
+							value={formik.values.email}
 							onChange={handleChange}
-							error={formik.touched.login && Boolean(formik.errors.login)}
-							helperText={formik.touched.login && formik.errors.login}
+							error={formik.touched.email && Boolean(formik.errors.email)}
+							helperText={formik.touched.email && formik.errors.email}
 							variant="standard"
-							name="login"
+							name="email"
+							type="email"
 						/>
 						<TextField
 							label="Password"
@@ -97,24 +124,38 @@ const SignIn: NextPage = () => {
 							type="password"
 						/>
 
-						<Box display="flex" mt={4}>
-							<Typography sx={{ flexGrow: 1 }}>
-								Have an issue?{' '}
-								<Link href="#">
-									<MuiLink variant="body2" href="#">
-										Ask for help
-									</MuiLink>
-								</Link>
-								.
-							</Typography>
+						<Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 2 }}>
+							<FormControlLabel
+								control={
+									<Checkbox
+										checked={formik.values.remember}
+										onChange={handleChange}
+										name="remember"
+									/>
+								}
+								label="Remember me"
+							/>
 
-							<LoadingButton loading={loading} variant="contained" type="submit">
-								Sign in
-							</LoadingButton>
+							<Typography sx={{ display: 'flex', alignItems: 'center' }}>
+								<Link href="#">
+									<MuiLink href="#">Forgot password?</MuiLink>
+								</Link>
+							</Typography>
 						</Box>
+
+						<LoadingButton loading={loading} variant="contained" type="submit">
+							Sign in
+						</LoadingButton>
 					</Box>
 				</form>
 			</Paper>
+
+			<Typography align="center">
+				Not registered yet?{' '}
+				<Link href="#">
+					<MuiLink href="#">Create an Account</MuiLink>
+				</Link>
+			</Typography>
 		</>
 	);
 };
