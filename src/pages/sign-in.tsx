@@ -9,7 +9,7 @@ import * as yup from 'yup';
 import Link from 'next/link';
 
 const validationSchema = yup.object({
-	login: yup.string().required('This field is required.'),
+	email: yup.string().required('This field is required.'),
 	password: yup.string().required('This field is required.'),
 });
 
@@ -17,7 +17,7 @@ const SignIn: NextPage = () => {
 	const { title } = useDocumentTitle('Sign in');
 	const formik = useFormik({
 		initialValues: {
-			login: '',
+			email: '',
 			password: '',
 		},
 		validationSchema,
@@ -72,19 +72,19 @@ const SignIn: NextPage = () => {
 								sx={{ backgroundColor: 'error.main', py: 0.3, px: 1 }}
 							>
 								<Typography sx={{ color: 'error.contrastText' }}>
-									Invalid login or password
+									Invalid email or password
 								</Typography>
 							</Paper>
 						)}
 
 						<TextField
-							label="Login"
-							value={formik.values.login}
+							label="Email"
+							value={formik.values.email}
 							onChange={handleChange}
-							error={formik.touched.login && Boolean(formik.errors.login)}
-							helperText={formik.touched.login && formik.errors.login}
+							error={formik.touched.email && Boolean(formik.errors.email)}
+							helperText={formik.touched.email && formik.errors.email}
 							variant="standard"
-							name="login"
+							name="email"
 						/>
 						<TextField
 							label="Password"
