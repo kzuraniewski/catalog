@@ -1,39 +1,41 @@
-import { Box, ButtonBase, Tooltip } from '@mui/material';
-import Link from 'next/link';
+import { Box, BoxProps, Typography } from '@mui/material';
 import React from 'react';
 
-export interface AnnotationProps {
+export interface AnnotationProps extends BoxProps {
 	anchorName: string;
+	highlighted?: boolean;
 }
 
-const Annotation = ({ anchorName }: AnnotationProps) => {
+const Annotation = ({ anchorName, highlighted = false, ...other }: AnnotationProps) => {
 	return (
-		<Box position="relative">
-			<Link href={`#${anchorName}`}>
-				<Tooltip title={`Odnośnik ${anchorName}`} placement="top" arrow>
-					<ButtonBase
-						href={`#${anchorName}`}
-						className="renderer"
-						sx={theme => ({
-							position: 'absolute',
-							width: 17,
-							height: 17,
-							transition: '0.1s',
-							color: 'secondary.contrastText',
-							borderRadius: theme.shape.borderRadius,
-							backgroundColor: 'secondary.main',
-							'&:hover': {
-								backgroundColor: 'secondary.light',
-								boxShadow: 1,
-							},
-						})}
-					>
-						{anchorName}
-					</ButtonBase>
-				</Tooltip>
-			</Link>
+		<Box
+			className="renderer"
+			sx={theme => ({
+				position: 'absolute',
+				userSelect: 'none',
+				display: 'flex',
+				justifyContent: 'center',
+				alignItems: 'center',
+
+				width: '1.2rem',
+				height: '1.2rem',
+				transform: 'translate(-0.2rem, -0.2rem)',
+
+				color: 'secondary.contrastText',
+				borderRadius: theme.shape.borderRadius,
+
+				backgroundColor: highlighted ? 'secondary.light' : 'secondary.main',
+				boxShadow: Number(highlighted),
+			})}
+			{...other}
+		>
+			<Typography variant="button" align="center">
+				{anchorName}
+			</Typography>
 		</Box>
 	);
 };
 
 export default Annotation;
+
+// TODO: Display element's name as a Tooltip on hover
