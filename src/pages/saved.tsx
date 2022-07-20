@@ -3,8 +3,8 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import useDocumentTitle from '../hooks/useDocumentTitle';
 
-const Zapisane: NextPage = () => {
-	const { title } = useDocumentTitle('Zapisane');
+const Saved: NextPage = () => {
+	const { title } = useDocumentTitle('Saved');
 
 	return (
 		<>
@@ -12,9 +12,9 @@ const Zapisane: NextPage = () => {
 				<title>{title}</title>
 			</Head>
 
-			<div>Zapisane</div>
+			<div>Saved</div>
 		</>
 	);
 };
 
-export default Zapisane;
+export default Saved;

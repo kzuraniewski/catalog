@@ -4,7 +4,7 @@ import Head from 'next/head';
 import useDocumentTitle from '../hooks/useDocumentTitle';
 
 const NotFound: NextPage = () => {
-	const { title } = useDocumentTitle('Nie znaleziono');
+	const { title } = useDocumentTitle('Not found');
 
 	return (
 		<>

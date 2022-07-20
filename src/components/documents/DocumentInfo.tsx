@@ -8,7 +8,7 @@ import {
 	TableRow,
 } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import { type ElementInfo } from '../../pages/api/dokumenty';
+import { type ElementInfo } from '../../pages/api/documents';
 
 // https://github.com/vercel/next.js/discussions/35773#discussioncomment-2485078
 const useSSR = () => {
@@ -48,10 +48,10 @@ const DocumentInfo = ({
 								},
 							})}
 						>
-							<TableCell>Nr odnośnika</TableCell>
-							<TableCell>Nr seryjny</TableCell>
-							<TableCell>Nazwa</TableCell>
-							<TableCell>Opis</TableCell>
+							<TableCell>Element</TableCell>
+							<TableCell>ID</TableCell>
+							<TableCell>Name</TableCell>
+							<TableCell>Description</TableCell>
 						</TableRow>
 					</TableHead>
 

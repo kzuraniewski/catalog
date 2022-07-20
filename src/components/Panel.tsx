@@ -19,7 +19,7 @@ const Panel = ({ title, children, parentAnchor, ...other }: PanelProps) => {
 						sx={{ mb: 1 }}
 						href={parentAnchor}
 					>
-						Powrót
+						Back
 					</Button>
 				</Link>
 			)}

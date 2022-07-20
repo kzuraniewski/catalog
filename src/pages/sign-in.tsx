@@ -10,12 +10,12 @@ import * as yup from 'yup';
 import Link from 'next/link';
 
 const validationSchema = yup.object({
-	login: yup.string().required('To pole jest wymagane.'),
-	password: yup.string().required('To pole jest wymagane.'),
+	login: yup.string().required('This field is required.'),
+	password: yup.string().required('This field is required.'),
 });
 
-const Katalog: NextPage = () => {
-	const { title } = useDocumentTitle('Logowanie');
+const SignIn: NextPage = () => {
+	const { title } = useDocumentTitle('Sign in');
 	const formik = useFormik({
 		initialValues: {
 			login: '',
@@ -62,7 +62,7 @@ const Katalog: NextPage = () => {
 				}}
 			>
 				<Typography variant="h1" sx={{ mb: 4 }}>
-					Zaloguj się
+					Sign in
 				</Typography>
 
 				<form onSubmit={formik.handleSubmit}>
@@ -73,7 +73,7 @@ const Katalog: NextPage = () => {
 								sx={{ backgroundColor: 'error.main', py: 0.3, px: 1 }}
 							>
 								<Typography sx={{ color: 'error.contrastText' }}>
-									Login lub hasło są nieprawidłowe
+									Invalid login or password
 								</Typography>
 							</Paper>
 						)}
@@ -88,7 +88,7 @@ const Katalog: NextPage = () => {
 							name="login"
 						/>
 						<TextField
-							label="Hasło"
+							label="Password"
 							value={formik.values.password}
 							onChange={handleChange}
 							error={formik.touched.password && Boolean(formik.errors.password)}
@@ -100,17 +100,17 @@ const Katalog: NextPage = () => {
 
 						<Box display="flex" mt={4}>
 							<Typography sx={{ flexGrow: 1 }}>
-								Problemy z logowaniem?{' '}
+								Have an issue?{' '}
 								<Link href="#">
 									<MuiLink variant="body2" href="#">
-										Poproś o pomoc
+										Ask for help
 									</MuiLink>
 								</Link>
 								.
 							</Typography>
 
 							<LoadingButton loading={loading} variant="contained" type="submit">
-								Zaloguj
+								Sign in
 							</LoadingButton>
 						</Box>
 					</Box>
@@ -120,4 +120,6 @@ const Katalog: NextPage = () => {
 	);
 };
 
-export default Katalog;
+export default SignIn;
+
+// TODO: https://dribbble.com/shots/15392711-Dashboard-Login-Sign-Up

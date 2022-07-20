@@ -89,25 +89,25 @@ const mockDocs: Document[] = [
 	getRandomDocData({
 		id: 'test',
 		url: '/mock-documents/test.pdf',
-		description: 'Przykładowy dokument bez odnośników oraz z jedną stroną.',
+		description: 'Example document with no elements and one page.',
 	}),
 	getRandomDocData({
 		id: 'test2',
 		url: '/mock-documents/test2.pdf',
-		description: 'Przykładowy dokument zawierający odnośniki oraz dwie strony.',
+		description: 'Example document with elements and consisting of two pages.',
 	}),
 ];
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 	// Only GET allowed
-	if (req.method !== 'GET') res.status(405).end(`Metoda ${req.method} nie jest dozwolona`);
+	if (req.method !== 'GET') res.status(405).end(`Method ${req.method} not allowed`);
 
 	await randomDelay(200, 1000);
 
 	// If `id` is specified in query, return a single document data object
 	if (req.query.id) {
 		if (Array.isArray(req.query.id))
-			res.status(404).end(`Użytkownik o id ${req.query.id} nie istnieje`);
+			res.status(404).end(`User of id ${req.query.id} not found`);
 
 		const mockFromId = mockDocs.find(doc => doc.id === req.query.id);
 

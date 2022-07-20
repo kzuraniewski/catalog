@@ -51,7 +51,7 @@ const Search = ({
 			</Box>
 
 			<InputBase
-				placeholder="Szukaj..."
+				placeholder="Search..."
 				sx={theme => ({
 					color: 'inherit',
 					'& .MuiInputBase-input': {

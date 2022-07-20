@@ -4,8 +4,8 @@ import Head from 'next/head';
 import useDocumentTitle from '../hooks/useDocumentTitle';
 import Panel from '../components/Panel';
 
-const Katalog: NextPage = () => {
-	const { title } = useDocumentTitle('Strona główna');
+const Home: NextPage = () => {
+	const { title } = useDocumentTitle('Main page');
 
 	return (
 		<>
@@ -18,4 +18,4 @@ const Katalog: NextPage = () => {
 	);
 };
 
-export default Katalog;
+export default Home;

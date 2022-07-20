@@ -40,8 +40,8 @@ const UserMenu = ({ ...other }: UserMenuProps) => {
 				open={Boolean(anchor)}
 				onClose={closeTooltip}
 			>
-				<MenuItem onClick={closeTooltip}>Profil</MenuItem>
-				<MenuItem onClick={closeTooltip}>Wyloguj</MenuItem>
+				<MenuItem onClick={closeTooltip}>Profile</MenuItem>
+				<MenuItem onClick={closeTooltip}>Log out</MenuItem>
 			</Menu>
 		</div>
 	);

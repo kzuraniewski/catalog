@@ -19,7 +19,7 @@ const Header = () => {
 		>
 			<Toolbar>
 				<HeaderLink href={mainWebsiteUrl} startIcon={<ArrowBack />}>
-					Strona główna
+					Main website
 				</HeaderLink>
 
 				<Box flexGrow={1} />
@@ -27,9 +27,9 @@ const Header = () => {
 				{user?.isLoggedIn ? (
 					<UserMenu />
 				) : (
-					<Link href="/logowanie">
-						<Button href="/logowanie" variant="contained" color="secondary">
-							Zaloguj się
+					<Link href="/sign-in">
+						<Button href="/sign-in" variant="contained" color="secondary">
+							Sign in
 						</Button>
 					</Link>
 				)}

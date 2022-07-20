@@ -7,12 +7,12 @@ import Panel from '../../components/Panel';
 import Search from '../../components/Search';
 import { DocumentCard } from '../../components/documents';
 import Loading from '../../components/Loading';
-import { type Document } from '../api/dokumenty';
+import { type Document } from '../api/documents';
 import useFetch from '../../hooks/useFetch';
 
-const Katalog: NextPage = () => {
-	const { title } = useDocumentTitle('Wyszukiwarka dokumentów');
-	const { error, data: documents } = useFetch<Document[]>('/api/dokumenty');
+const Catalog: NextPage = () => {
+	const { title } = useDocumentTitle('Document search');
+	const { error, data: documents } = useFetch<Document[]>('/api/documents');
 
 	return (
 		<>
@@ -20,7 +20,7 @@ const Katalog: NextPage = () => {
 				<title>{title}</title>
 			</Head>
 
-			<Panel title="Wyszukiwarka dokumentów">
+			<Panel title="Search for documents">
 				{/* Searching, filters */}
 				<Box mb={5}>
 					<Search />
@@ -33,7 +33,7 @@ const Katalog: NextPage = () => {
 						mt={10}
 						color={theme => theme.palette.grey[600]}
 					>
-						Nie znaleziono dokumentów
+						No documents found
 					</Typography>
 				)}
 				{!documents && !error && <Loading />}
@@ -57,4 +57,4 @@ const Katalog: NextPage = () => {
 	);
 };
 
-export default Katalog;
+export default Catalog;

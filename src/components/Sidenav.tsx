@@ -32,11 +32,11 @@ const Sidenav = ({ ...other }: SidenavProps) => {
 
 			<Box flexGrow={1} my={2}>
 				<List>
-					<SidenavLink to="/katalog" icon={<MenuBook />}>
-						Katalog
+					<SidenavLink to="/catalog" icon={<MenuBook />}>
+						Catalog
 					</SidenavLink>
-					<SidenavLink to="/zapisane" icon={<Bookmark />}>
-						Zapisane
+					<SidenavLink to="/saved" icon={<Bookmark />}>
+						Saved
 					</SidenavLink>
 				</List>
 			</Box>
@@ -44,7 +44,7 @@ const Sidenav = ({ ...other }: SidenavProps) => {
 			<Divider />
 			<Box p={2}>
 				<Typography variant="h6" component="h2">
-					Kontakt:
+					Contact:
 				</Typography>
 				<Typography
 					variant="body2"

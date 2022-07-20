@@ -1,4 +1,4 @@
-export const websiteName = 'Katalog';
+export const websiteName = 'Catalog';
 
 const useDocumentTitle = (title?: string) => {
 	const docTitle = title ? `${title} | ${websiteName}` : websiteName;

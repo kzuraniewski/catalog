@@ -18,9 +18,9 @@ const DocumentPreview = ({ file, annotationRenderer }: DocumentPreviewProps) => 
 			<Document
 				file={file}
 				onLoadSuccess={({ numPages }) => setPageCount(numPages)}
-				error={<Error message="Nie udało się załadować dokumentu." />}
+				error={<Error message="Cannot load document." />}
 				loading={<Loading />}
-				noData={<Error message="Nie wybrano pliku PDF." />}
+				noData={<Error message="No PDF file selected." />}
 			>
 				<Paper
 					elevation={3}
@@ -37,9 +37,9 @@ const DocumentPreview = ({ file, annotationRenderer }: DocumentPreviewProps) => 
 							key={num}
 							component={Page}
 							pageNumber={num}
-							error={<Error message="Nie udało się załadować strony." />}
+							error={<Error message="Cannot load page." />}
 							loading={<Loading />}
-							noData={<Error message="Nie wybrano strony." />}
+							noData={<Error message="No page selected." />}
 							customTextRenderer={annotationRenderer}
 							sx={{
 								display: num === pageNumber ? 'block' : 'none',

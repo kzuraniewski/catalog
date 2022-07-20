@@ -22,7 +22,7 @@ export interface DocumentCardProps extends CardProps {
 const DocumentCard = ({ id, description, saved, onSaveChange, ...other }: DocumentCardProps) => {
 	return (
 		<Card sx={{ width: 270, display: 'flex', flexDirection: 'column' }} {...other}>
-			<Link href={`/katalog/${id}`}>
+			<Link href={`/catalog/${id}`}>
 				<CardActionArea
 					disableRipple
 					href=""
@@ -44,7 +44,7 @@ const DocumentCard = ({ id, description, saved, onSaveChange, ...other }: Docume
 								variant="body1"
 								sx={{ color: theme => theme.palette.grey[500] }}
 							>
-								Brak opisu
+								No description provided
 							</Typography>
 						)}
 					</CardContent>
@@ -59,7 +59,7 @@ const DocumentCard = ({ id, description, saved, onSaveChange, ...other }: Docume
 						if (onSaveChange) onSaveChange();
 					}}
 				>
-					{saved ? 'Usuń z zapisanych' : 'Zapisz'}
+					{saved ? 'Unsave' : 'Save'}
 				</Button>
 			</CardActions>
 		</Card>

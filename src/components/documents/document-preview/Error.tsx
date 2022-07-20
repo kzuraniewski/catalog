@@ -30,9 +30,9 @@ const Error = ({ children, message, ...other }: ErrorProps) => {
 				{message}
 			</Typography>
 			<Typography variant="body2" sx={{ mt: 5 }}>
-				Nieoczekiwany błąd?{' '}
+				Unexpected error?{' '}
 				<Link href="#">
-					<MuiLink href="#">Zgłoś problem</MuiLink>
+					<MuiLink href="#">Report an issue</MuiLink>
 				</Link>
 				.
 			</Typography>
@@ -41,7 +41,7 @@ const Error = ({ children, message, ...other }: ErrorProps) => {
 
 			<Link href={lastUrl}>
 				<Button href={lastUrl} variant="outlined" sx={{ mt: 1 }}>
-					Powrót
+					Back
 				</Button>
 			</Link>
 		</Box>
