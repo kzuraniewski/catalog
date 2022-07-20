@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import type { NextPage } from 'next';
+import Image from 'next/image';
+import googleIcon from '../../public/icon-google.svg';
 import Head from 'next/head';
 import useDocumentTitle from '../hooks/useDocumentTitle';
 import {
@@ -10,6 +12,8 @@ import {
 	Link as MuiLink,
 	Checkbox,
 	FormControlLabel,
+	Divider,
+	Button,
 } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 import { useFormik } from 'formik';
@@ -64,7 +68,8 @@ const SignIn: NextPage = () => {
 
 			<Paper
 				sx={{
-					p: 3,
+					px: 5,
+					py: 3,
 					mx: 'auto',
 					mb: 2,
 					maxWidth: 500,
@@ -73,9 +78,17 @@ const SignIn: NextPage = () => {
 				<Typography variant="h1" sx={{ mb: 1 }}>
 					Sign in
 				</Typography>
-				<Typography sx={theme => ({ mb: 3, color: theme.palette.grey[600] })}>
+				<Typography sx={theme => ({ mb: 5, color: theme.palette.grey[600] })}>
 					Welcome back! Please enter your details.
 				</Typography>
+
+				<Button fullWidth variant="outlined" startIcon={<Image src={googleIcon} alt="" />}>
+					Sign in with Google
+				</Button>
+
+				<Divider sx={theme => ({ mt: 4, mb: 1, color: theme.palette.text.disabled })}>
+					or
+				</Divider>
 
 				<form onSubmit={formik.handleSubmit}>
 					<Box display="flex" flexDirection="column" gap={2}>
