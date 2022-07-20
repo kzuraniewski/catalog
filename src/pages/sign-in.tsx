@@ -85,6 +85,7 @@ const SignIn: NextPage = () => {
 							helperText={formik.touched.email && formik.errors.email}
 							variant="standard"
 							name="email"
+							type="email"
 						/>
 						<TextField
 							label="Password"
