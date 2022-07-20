@@ -21,7 +21,6 @@ const Annotation = ({ anchorName, highlighted = false, ...other }: AnnotationPro
 				height: '1.2rem',
 				transform: 'translate(-0.2rem, -0.2rem)',
 
-				transition: 'background-color 0.1s, box-shadow 0.1s',
 				color: 'secondary.contrastText',
 				borderRadius: theme.shape.borderRadius,
 
