@@ -67,7 +67,7 @@ const SignIn: NextPage = () => {
 					p: 3,
 					mx: 'auto',
 					mb: 2,
-					maxWidth: 600,
+					maxWidth: 500,
 				}}
 			>
 				<Typography variant="h1" sx={{ mb: 4 }}>
@@ -108,7 +108,7 @@ const SignIn: NextPage = () => {
 							type="password"
 						/>
 
-						<Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 3 }}>
+						<Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 2 }}>
 							<FormControlLabel
 								control={
 									<Checkbox
@@ -127,12 +127,7 @@ const SignIn: NextPage = () => {
 							</Typography>
 						</Box>
 
-						<LoadingButton
-							loading={loading}
-							variant="contained"
-							type="submit"
-							sx={{ ml: 'auto' }}
-						>
+						<LoadingButton loading={loading} variant="contained" type="submit">
 							Sign in
 						</LoadingButton>
 					</Box>
