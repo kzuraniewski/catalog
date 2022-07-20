@@ -35,10 +35,6 @@ const DocumentInfo = ({
 }: DocumentInfoProps) => {
 	const [isSSR] = useSSR();
 
-	useEffect(() => {
-		console.log(activeAnchor);
-	}, [activeAnchor]);
-
 	return (
 		<TableContainer component={Paper} sx={{ height: 'fit-content' }}>
 			{!isSSR && (
