@@ -100,13 +100,9 @@ const SignIn: NextPage = () => {
 
 						<Box display="flex" mt={4}>
 							<Typography sx={{ flexGrow: 1 }}>
-								Have an issue?{' '}
 								<Link href="#">
-									<MuiLink variant="body2" href="#">
-										Ask for help
-									</MuiLink>
+									<MuiLink href="#">Forgot password?</MuiLink>
 								</Link>
-								.
 							</Typography>
 
 							<LoadingButton loading={loading} variant="contained" type="submit">
