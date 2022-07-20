@@ -22,18 +22,18 @@ const Annotation = ({ anchorName, highlighted = false, ...other }: AnnotationPro
 					height: '1.2rem',
 					transform: 'translate(-0.2rem, -0.2rem)',
 
-					transition: 'color 0.1s',
+					transition: 'background-color 0.1s, box-shadow 0.1s',
 					color: 'secondary.contrastText',
 					borderRadius: theme.shape.borderRadius,
-					backgroundColor: 'secondary.main',
-					outline: theme =>
-						highlighted ? `2px solid ${theme.palette.primary.light}` : 'none',
 
-					'&:hover': {
+					backgroundColor: 'secondary.main',
+					boxShadow: 0,
+					'&:hover, &[data-highlighted]': {
 						backgroundColor: 'secondary.light',
 						boxShadow: 1,
 					},
 				})}
+				data-highlighted={highlighted || null}
 			>
 				<Typography variant="button" align="center">
 					{anchorName}
