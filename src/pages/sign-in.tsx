@@ -70,8 +70,11 @@ const SignIn: NextPage = () => {
 					maxWidth: 500,
 				}}
 			>
-				<Typography variant="h1" sx={{ mb: 4 }}>
+				<Typography variant="h1" sx={{ mb: 1 }}>
 					Sign in
+				</Typography>
+				<Typography sx={theme => ({ mb: 3, color: theme.palette.grey[600] })}>
+					Welcome back! Please enter your details.
 				</Typography>
 
 				<form onSubmit={formik.handleSubmit}>
