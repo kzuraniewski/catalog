@@ -23,11 +23,21 @@ const useSSR = () => {
 
 export interface DocumentInfoProps extends React.HTMLAttributes<HTMLElement> {
 	elements: ElementInfo[];
+	activeAnchor?: string | null;
 	onActiveAnchorChange?: (anchorName: ElementInfo['id'] | null) => any;
 }
 
-const DocumentInfo = ({ elements, onActiveAnchorChange, ...other }: DocumentInfoProps) => {
+const DocumentInfo = ({
+	elements,
+	activeAnchor,
+	onActiveAnchorChange,
+	...other
+}: DocumentInfoProps) => {
 	const [isSSR] = useSSR();
+
+	useEffect(() => {
+		console.log(activeAnchor);
+	}, [activeAnchor]);
 
 	return (
 		<TableContainer component={Paper} sx={{ height: 'fit-content' }}>
@@ -53,13 +63,16 @@ const DocumentInfo = ({ elements, onActiveAnchorChange, ...other }: DocumentInfo
 						{elements.map((element, index) => (
 							<TableRow
 								key={element.id}
-								hover
 								onMouseEnter={() => onActiveAnchorChange?.((index + 1).toString())}
 								sx={theme => ({
 									['&:nth-of-type(odd)']: {
 										backgroundColor: theme.palette.grey[200],
 									},
+									'&[data-highlighted], &:hover': {
+										backgroundColor: theme.palette.grey[100],
+									},
 								})}
+								data-highlighted={activeAnchor === (index + 1).toString() || null}
 							>
 								<TableCell>{index + 1}</TableCell>
 								{Object.values(element).map((value, index) => (

@@ -60,6 +60,7 @@ const Dokument: NextPage = () => {
 
 						<DocumentInfo
 							elements={document.elements}
+							activeAnchor={activeAnchor}
 							onActiveAnchorChange={anchorName => setActiveAnchor(anchorName)}
 						/>
 					</Box>
