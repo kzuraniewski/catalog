@@ -19,7 +19,7 @@ import { LoadingButton } from '@mui/lab';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import Link from 'next/link';
-import AuthPaper from '../components/AuthPaper';
+import { AuthPaper } from '../components/auth';
 
 const validationSchema = yup.object({
 	email: yup.string().required('This field is required.'),
@@ -67,14 +67,7 @@ const SignIn: NextPage = () => {
 				<title>{title}</title>
 			</Head>
 
-			<AuthPaper>
-				<Typography variant="h1" sx={{ mb: 1 }}>
-					Sign in
-				</Typography>
-				<Typography sx={theme => ({ mb: 5, color: theme.palette.grey[600] })}>
-					Welcome back! Please enter your details.
-				</Typography>
-
+			<AuthPaper title="Sign in" subtitle="Welcome back! Please enter your details.">
 				<Button fullWidth variant="outlined" startIcon={<Image src={googleIcon} alt="" />}>
 					Sign in with Google
 				</Button>

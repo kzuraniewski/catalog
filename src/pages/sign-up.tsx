@@ -19,7 +19,7 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 import Link from 'next/link';
 import YupPassword from 'yup-password';
-import AuthPaper from '../components/AuthPaper';
+import { AuthPaper } from '../components/auth';
 YupPassword(yup);
 
 const validationSchema = yup.object({
@@ -84,14 +84,10 @@ const SignUp: NextPage = () => {
 				<title>{title}</title>
 			</Head>
 
-			<AuthPaper>
-				<Typography variant="h1" sx={{ mb: 1 }}>
-					Register
-				</Typography>
-				<Typography sx={theme => ({ mb: 5, color: theme.palette.grey[600] })}>
-					Get access to all the features by creating an account
-				</Typography>
-
+			<AuthPaper
+				title="Register"
+				subtitle="Get access to all the features by creating an account"
+			>
 				<Button fullWidth variant="outlined" startIcon={<Image src={googleIcon} alt="" />}>
 					Sign up with Google
 				</Button>
