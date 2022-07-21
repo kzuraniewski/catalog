@@ -21,6 +21,7 @@ import * as yup from 'yup';
 import Link from 'next/link';
 import YupPassword from 'yup-password';
 import { AuthPaper } from '../components/auth';
+import { Form, FormCheckbox, FormField } from '../components/form';
 YupPassword(yup);
 
 const validationSchema = yup.object({
@@ -42,42 +43,16 @@ const validationSchema = yup.object({
 	tos: yup.boolean().required('asd'),
 });
 
+const initialValues = {
+	fullName: '',
+	email: '',
+	password: '',
+	confirmPassword: '',
+	tos: false,
+};
+
 const SignUp: NextPage = () => {
 	const { title } = useDocumentTitle('Sign in');
-	const formik = useFormik({
-		initialValues: {
-			fullName: '',
-			email: '',
-			password: '',
-			confirmPassword: '',
-			tos: false,
-		},
-		validationSchema,
-		onSubmit: values => {
-			setLoading(true);
-		},
-	});
-
-	const [loading, setLoading] = useState(false);
-	const [loginError, setLoginError] = useState(false);
-
-	useEffect(() => {
-		if (!loading) return;
-
-		const id = setTimeout(() => {
-			setLoading(false);
-			setLoginError(true);
-		}, 2000);
-
-		return () => clearTimeout(id);
-	}, [loading]);
-
-	const handleChange = (e: React.ChangeEvent) => {
-		formik.handleChange(e);
-
-		// Hide login error message when typing
-		if (loginError) setLoginError(false);
-	};
 
 	return (
 		<>
@@ -93,98 +68,25 @@ const SignUp: NextPage = () => {
 					Sign up with Google
 				</Button>
 
-				<Divider sx={theme => ({ mt: 4, mb: 1, color: theme.palette.text.disabled })}>
-					or
-				</Divider>
+				<Divider sx={theme => ({ my: 4, color: theme.palette.text.disabled })}>or</Divider>
 
-				<form onSubmit={formik.handleSubmit}>
-					<Box display="flex" flexDirection="column" gap={2}>
-						{loginError && (
-							<Paper
-								variant="outlined"
-								sx={{ backgroundColor: 'error.main', py: 0.3, px: 1 }}
-							>
-								<Typography sx={{ color: 'error.contrastText' }}>
-									There was an error while creating your account
-								</Typography>
-							</Paper>
-						)}
+				<Form
+					validationSchema={validationSchema}
+					initialValues={initialValues}
+					submitText="Create an account"
+				>
+					<FormField label="Full name" name="fullName" />
+					<FormField label="Email" name="email" type="email" />
+					<FormField label="Password" name="password" type="password" />
+					<FormField label="Confirm password" name="confirmPassword" type="password" />
 
-						<TextField
-							label="Full name"
-							value={formik.values.fullName}
-							onChange={handleChange}
-							error={formik.touched.fullName && Boolean(formik.errors.fullName)}
-							helperText={formik.touched.fullName && formik.errors.fullName}
-							variant="standard"
-							name="fullName"
-							type="text"
-						/>
-						<TextField
-							label="Email"
-							value={formik.values.email}
-							onChange={handleChange}
-							error={formik.touched.email && Boolean(formik.errors.email)}
-							helperText={formik.touched.email && formik.errors.email}
-							variant="standard"
-							name="email"
-							type="email"
-						/>
-						<TextField
-							label="Password"
-							value={formik.values.password}
-							onChange={handleChange}
-							error={formik.touched.password && Boolean(formik.errors.password)}
-							helperText={formik.touched.password && formik.errors.password}
-							variant="standard"
-							name="password"
-							type="password"
-						/>
-						<TextField
-							label="Confirm password"
-							value={formik.values.confirmPassword}
-							onChange={handleChange}
-							error={
-								formik.touched.confirmPassword &&
-								Boolean(formik.errors.confirmPassword)
-							}
-							helperText={
-								formik.touched.confirmPassword && formik.errors.confirmPassword
-							}
-							variant="standard"
-							name="confirmPassword"
-							type="password"
-						/>
-
-						<FormControlLabel
-							control={
-								<Checkbox
-									required
-									checked={formik.values.tos}
-									onChange={handleChange}
-									name="tos"
-								/>
-							}
-							label={
-								<>
-									I&apos;ve read and accept the{' '}
-									<Link href="#">
-										<MuiLink href="#">Terms & Conditions</MuiLink>
-									</Link>
-								</>
-							}
-						/>
-
-						<LoadingButton
-							loading={loading}
-							variant="contained"
-							type="submit"
-							sx={{ mt: 2 }}
-						>
-							Create an account
-						</LoadingButton>
-					</Box>
-				</form>
+					<FormCheckbox name="tos" required>
+						I&apos;ve read and accept the{' '}
+						<Link href="#">
+							<MuiLink href="#">Terms & Conditions</MuiLink>
+						</Link>
+					</FormCheckbox>
+				</Form>
 			</AuthPaper>
 
 			<Typography align="center">
