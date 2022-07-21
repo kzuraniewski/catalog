@@ -58,8 +58,8 @@ const SignIn: NextPage = () => {
 							Remember me
 						</FormCheckbox>
 
-						<Link href="#">
-							<MuiLink href="#">Forgot password?</MuiLink>
+						<Link href="/restore-password">
+							<MuiLink href="/restore-password">Forgot password?</MuiLink>
 						</Link>
 					</Box>
 				</Form>
