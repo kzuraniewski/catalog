@@ -19,19 +19,37 @@ import { LoadingButton } from '@mui/lab';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import Link from 'next/link';
+import YupPassword from 'yup-password';
+YupPassword(yup);
 
 const validationSchema = yup.object({
-	email: yup.string().required('This field is required.'),
-	password: yup.string().required('This field is required.'),
+	fullName: yup.string().required('This field is required'),
+	email: yup.string().required('This field is required'),
+	password: yup
+		.string()
+		.min(8, 'Password must be 8 to 16 characters long')
+		.max(16, 'Password must be 8 to 16 characters long')
+		.minLowercase(1, 'Password must contain at least one lowercase and one uppercase character')
+		.minUppercase(1, 'Password must contain at least one lowercase and one uppercase character')
+		.minNumbers(1, 'Password must contain at least one number')
+		.minSymbols(1, 'Password must contain at least one special character')
+		.required('This field is required.'),
+	confirmPassword: yup
+		.string()
+		.oneOf([yup.ref('password'), null], 'Passwords must match')
+		.required('This field is required'),
+	tos: yup.boolean().required('asd'),
 });
 
-const SignIn: NextPage = () => {
+const SignUp: NextPage = () => {
 	const { title } = useDocumentTitle('Sign in');
 	const formik = useFormik({
 		initialValues: {
+			fullName: '',
 			email: '',
 			password: '',
-			remember: true,
+			confirmPassword: '',
+			tos: false,
 		},
 		validationSchema,
 		onSubmit: values => {
@@ -76,14 +94,14 @@ const SignIn: NextPage = () => {
 				}}
 			>
 				<Typography variant="h1" sx={{ mb: 1 }}>
-					Sign in
+					Register
 				</Typography>
 				<Typography sx={theme => ({ mb: 5, color: theme.palette.grey[600] })}>
-					Welcome back! Please enter your details.
+					Get access to all the features by creating an account
 				</Typography>
 
 				<Button fullWidth variant="outlined" startIcon={<Image src={googleIcon} alt="" />}>
-					Sign in with Google
+					Sign up with Google
 				</Button>
 
 				<Divider sx={theme => ({ mt: 4, mb: 1, color: theme.palette.text.disabled })}>
@@ -98,11 +116,21 @@ const SignIn: NextPage = () => {
 								sx={{ backgroundColor: 'error.main', py: 0.3, px: 1 }}
 							>
 								<Typography sx={{ color: 'error.contrastText' }}>
-									Invalid email or password
+									There was an error while creating your account
 								</Typography>
 							</Paper>
 						)}
 
+						<TextField
+							label="Full name"
+							value={formik.values.fullName}
+							onChange={handleChange}
+							error={formik.touched.fullName && Boolean(formik.errors.fullName)}
+							helperText={formik.touched.fullName && formik.errors.fullName}
+							variant="standard"
+							name="fullName"
+							type="text"
+						/>
 						<TextField
 							label="Email"
 							value={formik.values.email}
@@ -123,43 +151,61 @@ const SignIn: NextPage = () => {
 							name="password"
 							type="password"
 						/>
+						<TextField
+							label="Confirm password"
+							value={formik.values.confirmPassword}
+							onChange={handleChange}
+							error={
+								formik.touched.confirmPassword &&
+								Boolean(formik.errors.confirmPassword)
+							}
+							helperText={
+								formik.touched.confirmPassword && formik.errors.confirmPassword
+							}
+							variant="standard"
+							name="confirmPassword"
+							type="password"
+						/>
 
-						<Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 2 }}>
-							<FormControlLabel
-								control={
-									<Checkbox
-										checked={formik.values.remember}
-										onChange={handleChange}
-										name="remember"
-									/>
-								}
-								label="Remember me"
-							/>
+						<FormControlLabel
+							control={
+								<Checkbox
+									required
+									checked={formik.values.tos}
+									onChange={handleChange}
+									name="tos"
+								/>
+							}
+							label={
+								<>
+									I&apos;ve read and accept the{' '}
+									<Link href="#">
+										<MuiLink href="#">Terms & Conditions</MuiLink>
+									</Link>
+								</>
+							}
+						/>
 
-							<Typography sx={{ display: 'flex', alignItems: 'center' }}>
-								<Link href="#">
-									<MuiLink href="#">Forgot password?</MuiLink>
-								</Link>
-							</Typography>
-						</Box>
-
-						<LoadingButton loading={loading} variant="contained" type="submit">
-							Sign in
+						<LoadingButton
+							loading={loading}
+							variant="contained"
+							type="submit"
+							sx={{ mt: 2 }}
+						>
+							Create an account
 						</LoadingButton>
 					</Box>
 				</form>
 			</Paper>
 
 			<Typography align="center">
-				Not registered yet?{' '}
-				<Link href="/sign-up">
-					<MuiLink href="/sign-up">Create an Account</MuiLink>
+				Already have an account?{' '}
+				<Link href="/sign-in">
+					<MuiLink href="/sign-in">Sign in</MuiLink>
 				</Link>
 			</Typography>
 		</>
 	);
 };
 
-export default SignIn;
-
-// TODO: https://dribbble.com/shots/15392711-Dashboard-Login-Sign-Up
+export default SignUp;
