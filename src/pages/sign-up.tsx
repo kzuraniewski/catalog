@@ -6,7 +6,6 @@ import Head from 'next/head';
 import useDocumentTitle from '../hooks/useDocumentTitle';
 import {
 	Box,
-	Paper,
 	TextField,
 	Typography,
 	Link as MuiLink,
@@ -20,6 +19,7 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 import Link from 'next/link';
 import YupPassword from 'yup-password';
+import AuthPaper from '../components/AuthPaper';
 YupPassword(yup);
 
 const validationSchema = yup.object({
@@ -84,15 +84,7 @@ const SignUp: NextPage = () => {
 				<title>{title}</title>
 			</Head>
 
-			<Paper
-				sx={{
-					px: 5,
-					py: 3,
-					mx: 'auto',
-					mb: 2,
-					maxWidth: 500,
-				}}
-			>
+			<AuthPaper>
 				<Typography variant="h1" sx={{ mb: 1 }}>
 					Register
 				</Typography>
@@ -111,14 +103,14 @@ const SignUp: NextPage = () => {
 				<form onSubmit={formik.handleSubmit}>
 					<Box display="flex" flexDirection="column" gap={2}>
 						{loginError && (
-							<Paper
+							<AuthPaper
 								variant="outlined"
 								sx={{ backgroundColor: 'error.main', py: 0.3, px: 1 }}
 							>
 								<Typography sx={{ color: 'error.contrastText' }}>
 									There was an error while creating your account
 								</Typography>
-							</Paper>
+							</AuthPaper>
 						)}
 
 						<TextField
@@ -196,7 +188,7 @@ const SignUp: NextPage = () => {
 						</LoadingButton>
 					</Box>
 				</form>
-			</Paper>
+			</AuthPaper>
 
 			<Typography align="center">
 				Already have an account?{' '}

@@ -19,6 +19,7 @@ import { LoadingButton } from '@mui/lab';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import Link from 'next/link';
+import AuthPaper from '../components/AuthPaper';
 
 const validationSchema = yup.object({
 	email: yup.string().required('This field is required.'),
@@ -66,15 +67,7 @@ const SignIn: NextPage = () => {
 				<title>{title}</title>
 			</Head>
 
-			<Paper
-				sx={{
-					px: 5,
-					py: 3,
-					mx: 'auto',
-					mb: 2,
-					maxWidth: 500,
-				}}
-			>
+			<AuthPaper>
 				<Typography variant="h1" sx={{ mb: 1 }}>
 					Sign in
 				</Typography>
@@ -148,7 +141,7 @@ const SignIn: NextPage = () => {
 						</LoadingButton>
 					</Box>
 				</form>
-			</Paper>
+			</AuthPaper>
 
 			<Typography align="center">
 				Not registered yet?{' '}
