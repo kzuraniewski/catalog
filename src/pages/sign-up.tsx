@@ -13,6 +13,7 @@ import {
 	FormControlLabel,
 	Divider,
 	Button,
+	Paper,
 } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 import { useFormik } from 'formik';
@@ -99,14 +100,14 @@ const SignUp: NextPage = () => {
 				<form onSubmit={formik.handleSubmit}>
 					<Box display="flex" flexDirection="column" gap={2}>
 						{loginError && (
-							<AuthPaper
+							<Paper
 								variant="outlined"
 								sx={{ backgroundColor: 'error.main', py: 0.3, px: 1 }}
 							>
 								<Typography sx={{ color: 'error.contrastText' }}>
 									There was an error while creating your account
 								</Typography>
-							</AuthPaper>
+							</Paper>
 						)}
 
 						<TextField
