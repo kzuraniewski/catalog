@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppBar, Box, Button, Toolbar } from '@mui/material';
+import { AppBar, Box, Button, Stack, Toolbar } from '@mui/material';
 import HeaderLink from './HeaderLink';
 import { drawerWidth } from './Sidenav';
 import { ArrowBack } from '@mui/icons-material';
@@ -27,11 +27,20 @@ const Header = () => {
 				{user?.isLoggedIn ? (
 					<UserMenu />
 				) : (
-					<Link href="/sign-in">
-						<Button href="/sign-in" variant="contained" color="secondary">
-							Sign in
-						</Button>
-					</Link>
+					<>
+						<HeaderLink href="/sign-in">Sign in</HeaderLink>
+
+						<Link href="/sign-up">
+							<Button
+								href="/sign-up"
+								variant="contained"
+								color="secondary"
+								sx={{ ml: 1 }}
+							>
+								Create account
+							</Button>
+						</Link>
+					</>
 				)}
 			</Toolbar>
 		</AppBar>
